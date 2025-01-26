@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreApp", "StoreApp\StoreA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{F98D5C10-89E7-4C71-87E2-C205D4A127AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{43C44582-08E1-41B3-AB2B-B92A8C907EDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{F98D5C10-89E7-4C71-87E2-C205D4A127AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F98D5C10-89E7-4C71-87E2-C205D4A127AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F98D5C10-89E7-4C71-87E2-C205D4A127AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43C44582-08E1-41B3-AB2B-B92A8C907EDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43C44582-08E1-41B3-AB2B-B92A8C907EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43C44582-08E1-41B3-AB2B-B92A8C907EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43C44582-08E1-41B3-AB2B-B92A8C907EDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

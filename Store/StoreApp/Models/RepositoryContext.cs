@@ -1,3 +1,4 @@
+using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 namespace StoreApp.Models
