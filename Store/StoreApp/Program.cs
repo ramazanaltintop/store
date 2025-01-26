@@ -1,12 +1,13 @@
+using DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
-using StoreApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<RepositoryContext>(options => {
-    options.UseSqlite(builder.Configuration.GetConnectionString("sqlconnection"));
+builder.Services.AddDbContext<ProductDbContext>(options => {
+    options.UseSqlite(builder.Configuration.GetConnectionString("sqlconnection"),
+    b => b.MigrationsAssembly("StoreApp"));
 });
 
 var app = builder.Build();
