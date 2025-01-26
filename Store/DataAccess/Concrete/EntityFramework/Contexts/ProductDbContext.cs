@@ -6,10 +6,18 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
     public class ProductDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
+        public ProductDbContext()
+        {
+            
+        }
         public ProductDbContext(DbContextOptions<ProductDbContext> options)
         : base(options)
         {
 
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite(@"Data Source = C:\sqlite3\ProductDb.db");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

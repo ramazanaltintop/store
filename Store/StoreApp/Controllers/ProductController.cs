@@ -1,28 +1,25 @@
-using DataAccess.Concrete.EntityFramework.Contexts;
-using Entities.Concrete;
+using Business.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StoreApp.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductDbContext _context;
+        private readonly IProductService _productService;
 
-        public ProductController(ProductDbContext context)
+        public ProductController(IProductService productService)
         {
-            _context = context;
+            _productService = productService;
         }
 
         public IActionResult Index()
         {
-            var model = _context.Products.ToList();
-            return View(model);
+            return View(_productService.GetAllProducts());
         }
 
         public IActionResult Get(int id)
         {
-            Product product = _context.Products.First(p => p.ProductId.Equals(id));
-            return View(product);
+            return View(_productService.GetProductById(id));
         }
     }
 }

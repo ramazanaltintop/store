@@ -1,3 +1,7 @@
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +13,9 @@ builder.Services.AddDbContext<ProductDbContext>(options => {
     options.UseSqlite(builder.Configuration.GetConnectionString("sqlconnection"),
     b => b.MigrationsAssembly("StoreApp"));
 });
+
+builder.Services.AddSingleton<IProductService, ProductManager>();
+builder.Services.AddSingleton<IProductDal, EfProductDal>();
 
 var app = builder.Build();
 
