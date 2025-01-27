@@ -4,7 +4,7 @@ namespace Business.Abstract
 {
     public interface IProductService
     {
-        List<Product> GetAllProducts();
-        Product GetProductById(int id);
+        IQueryable<Product> GetAllProducts(bool trackChanges);
+        Product GetProductById(int id, bool trackChanges);
     }
 }

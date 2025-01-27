@@ -13,14 +13,19 @@ namespace Business.Concrete
             _dalCoordinator = dalCoordinator;
         }
 
-        public List<Product> GetAllProducts()
+        public IQueryable<Product> GetAllProducts(bool trackChanges)
         {
-            return _dalCoordinator.Product.GetAll();
+            return _dalCoordinator.Product.GetAll(trackChanges);
         }
 
-        public Product GetProductById(int id)
+        public Product GetProductById(int id, bool trackChanges)
         {
-            return _dalCoordinator.Product.Get(p => p.ProductId.Equals(id));
+            var product = _dalCoordinator.Product.Get(p => p.ProductId.Equals(id), trackChanges);
+            if (product is null)
+            {
+                throw new Exception("Product not found!");
+            }
+            return product;
         }
     }
 }

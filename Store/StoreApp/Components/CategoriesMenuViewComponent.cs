@@ -14,7 +14,7 @@ namespace StoreApp.Components
 
         public IViewComponentResult Invoke()
         {
-            return View(_coordinator.CategoryService.GetAllCategories());
+            return View(_coordinator.CategoryService.GetAllCategories(false));
         }
     }
 }

@@ -1,3 +1,4 @@
+using Core.DataAccess;
 using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Contexts;
@@ -6,7 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfProductDal : EfEntityRepositoryBase<Product, ProductDbContext>, IProductDal
+    public class EfProductDal : EfQueryableRepository<Product>, IProductDal
     {
+        public EfProductDal(ProductDbContext context) : base(context)
+        {
+        }
     }
 }

@@ -13,9 +13,9 @@ namespace Business.Concrete
             _dalCoordinator = dalCoordinator;
         }
 
-        public List<Category> GetAllCategories()
+        public IQueryable<Category> GetAllCategories(bool trackChanges)
         {
-            return _dalCoordinator.Category.GetAll();
+            return _dalCoordinator.Category.GetAll(trackChanges);
         }
     }
 }
