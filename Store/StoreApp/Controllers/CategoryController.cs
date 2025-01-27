@@ -1,4 +1,4 @@
-using Business.Abstract;
+using Business.Coordinators;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,15 +6,16 @@ namespace StoreApp.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ICategoryService _categoryService;
+        private readonly IServiceCoordinator _coordinator;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(IServiceCoordinator coordinator)
         {
-            _categoryService = categoryService;
+            _coordinator = coordinator;
         }
+
         public IActionResult Index()
         {
-            return View(_categoryService.GetAllCategories());
+            return View(_coordinator.CategoryService.GetAllCategories());
         }
     }
 }

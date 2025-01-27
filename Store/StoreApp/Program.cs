@@ -1,8 +1,10 @@
 using Business.Abstract;
 using Business.Concrete;
+using Business.Coordinators;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.EntityFramework.Contexts;
+using DataAccess.Coordinators;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,11 +16,13 @@ builder.Services.AddDbContext<ProductDbContext>(options => {
     b => b.MigrationsAssembly("StoreApp"));
 });
 
-builder.Services.AddSingleton<IProductService, ProductManager>();
-builder.Services.AddSingleton<IProductDal, EfProductDal>();
+builder.Services.AddScoped<IServiceCoordinator, ServiceCoordinator>();
+builder.Services.AddScoped<IProductService, ProductManager>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
-builder.Services.AddSingleton<ICategoryService, CategoryManager>();
-builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<IDalCoordinator, DalCoordinator>();
+builder.Services.AddScoped<IProductDal, EfProductDal>();
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 
 var app = builder.Build();
 

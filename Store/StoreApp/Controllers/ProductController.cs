@@ -1,25 +1,25 @@
-using Business.Abstract;
+using Business.Coordinators;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StoreApp.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProductService _productService;
+        private readonly IServiceCoordinator _coordinator;
 
-        public ProductController(IProductService productService)
+        public ProductController(IServiceCoordinator coordinator)
         {
-            _productService = productService;
+            _coordinator = coordinator;
         }
 
         public IActionResult Index()
         {
-            return View(_productService.GetAllProducts());
+            return View(_coordinator.ProductService.GetAllProducts());
         }
 
-        public IActionResult Get(int id)
+        public IActionResult Get([FromRoute(Name = "id")] int id)
         {
-            return View(_productService.GetProductById(id));
+            return View(_coordinator.ProductService.GetProductById(id));
         }
     }
 }

@@ -1,21 +1,21 @@
 using Business.Abstract;
-using DataAccess.Abstract;
+using DataAccess.Coordinators;
 using Entities.Concrete;
 
 namespace Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        private ICategoryDal _categoryDal;
+        private IDalCoordinator _dalCoordinator;
 
-        public CategoryManager(ICategoryDal categoryDal)
+        public CategoryManager(IDalCoordinator dalCoordinator)
         {
-            _categoryDal = categoryDal;
+            _dalCoordinator = dalCoordinator;
         }
 
         public List<Category> GetAllCategories()
         {
-            return _categoryDal.GetAll();
+            return _dalCoordinator.Category.GetAll();
         }
     }
 }

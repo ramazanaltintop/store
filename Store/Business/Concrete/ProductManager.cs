@@ -1,26 +1,26 @@
 using Business.Abstract;
-using DataAccess.Abstract;
+using DataAccess.Coordinators;
 using Entities.Concrete;
 
 namespace Business.Concrete
 {
     public class ProductManager : IProductService
     {
-        private readonly IProductDal _productDal;
+        private readonly IDalCoordinator _dalCoordinator;
 
-        public ProductManager(IProductDal productDal)
+        public ProductManager(IDalCoordinator dalCoordinator)
         {
-            _productDal = productDal;
+            _dalCoordinator = dalCoordinator;
         }
 
         public List<Product> GetAllProducts()
         {
-            return _productDal.GetAll();
+            return _dalCoordinator.Product.GetAll();
         }
 
         public Product GetProductById(int id)
         {
-            return _productDal.Get(p => p.ProductId.Equals(id));
+            return _dalCoordinator.Product.Get(p => p.ProductId.Equals(id));
         }
     }
 }
