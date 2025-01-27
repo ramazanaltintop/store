@@ -14,7 +14,7 @@ namespace StoreApp.Components
 
         public string Invoke()
         {
-            return _coordinator.ProductService.GetAllProducts(false).Count().ToString();
+            return _coordinator.ProductService.GetAllProducts().Count().ToString();
         }
     }
 }

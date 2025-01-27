@@ -6,10 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCategoryDal : EfQueryableRepository<Category>, ICategoryDal
+    public class EfCategoryDal : EfEntityRepositoryBase<Category, ProductDbContext>, ICategoryDal
     {
-        public EfCategoryDal(ProductDbContext context) : base(context)
-        {
-        }
     }
 }

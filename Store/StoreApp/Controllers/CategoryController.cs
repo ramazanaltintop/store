@@ -15,7 +15,7 @@ namespace StoreApp.Controllers
 
         public IActionResult Index()
         {
-            return View(_coordinator.CategoryService.GetAllCategories(false));
+            return View(_coordinator.CategoryService.GetAllCategories());
         }
     }
 }

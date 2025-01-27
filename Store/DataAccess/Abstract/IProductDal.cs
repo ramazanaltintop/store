@@ -3,7 +3,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface IProductDal : IQueryableRepository<Product>
+    public interface IProductDal : IEntityRepository<Product>
     {
     }
 }

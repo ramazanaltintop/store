@@ -14,12 +14,12 @@ namespace StoreApp.Controllers
 
         public IActionResult Index()
         {
-            return View(_coordinator.ProductService.GetAllProducts(false));
+            return View(_coordinator.ProductService.GetAllProducts());
         }
 
         public IActionResult Get([FromRoute(Name = "id")] int id)
         {
-            return View(_coordinator.ProductService.GetProductById(id, false));
+            return View(_coordinator.ProductService.GetProductById(id));
         }
     }
 }
