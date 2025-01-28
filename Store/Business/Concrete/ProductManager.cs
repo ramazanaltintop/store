@@ -1,4 +1,5 @@
 using Business.Abstract;
+using Core.Entities;
 using DataAccess.Coordinators;
 using Entities.Concrete;
 
@@ -22,11 +23,8 @@ namespace Business.Concrete
         public void DeleteOneProduct(int id)
         {
             var entity = _dalCoordinator.Product.GetOneProduct(id, false);
-            if (entity is null)
-            {
-                throw new Exception("Product not found!");
-            }
-            _dalCoordinator.Product.DeleteOneProduct(entity);
+            CheckIfEntityExists(entity);
+            _dalCoordinator.Product.DeleteOneProduct(entity!);
             _dalCoordinator.Save();
         }
 
@@ -38,23 +36,25 @@ namespace Business.Concrete
         public Product? GetOneProduct(int id, bool trackChanges)
         {
             var entity = _dalCoordinator.Product.GetOneProduct(id, trackChanges);
-            if (entity is null)
-            {
-                throw new Exception("Product not found!");
-            }
+            CheckIfEntityExists(entity);
             return entity;
         }
 
         public void UpdateOneProduct(Product product)
         {
             var entity  = _dalCoordinator.Product.GetOneProduct(product.ProductId, true);
+            CheckIfEntityExists(entity);
+            entity!.ProductName = product.ProductName;
+            entity.Price = product.Price;
+            _dalCoordinator.Save();
+        }
+
+        private void CheckIfEntityExists(IEntity? entity)
+        {
             if (entity is null)
             {
                 throw new Exception("Product not found!");
             }
-            entity.ProductName = product.ProductName;
-            entity.Price = product.Price;
-            _dalCoordinator.Save();
         }
     }
 }
