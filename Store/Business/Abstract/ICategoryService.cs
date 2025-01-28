@@ -4,6 +4,6 @@ namespace Business.Abstract
 {
     public interface ICategoryService
     {
-        List<Category> GetAllCategories();
+        IEnumerable<Category> GetAllCategories(bool trackChanges);
     }
 }

@@ -3,8 +3,8 @@ using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface ICategoryDal : IEntityRepository<Category>
+    public interface ICategoryDal : IQueryableRepository<Category>
     {
-        
+        IQueryable<Category> GetAllCategories(bool trackChanges);
     }
 }

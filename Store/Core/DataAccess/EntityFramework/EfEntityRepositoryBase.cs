@@ -8,7 +8,7 @@ namespace Core.DataAccess.EntityFramework
     where TEntity : class, IEntity, new()
     where TContext : DbContext, new()
     {
-        public TEntity Add(TEntity entity)
+        public TEntity Create(TEntity entity)
         {
             using (var context = new TContext())
             {

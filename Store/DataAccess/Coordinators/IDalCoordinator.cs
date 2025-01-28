@@ -6,5 +6,6 @@ namespace DataAccess.Coordinators
     {
         IProductDal Product { get; }
         ICategoryDal Category { get; }
+        void Save();
     }
 }

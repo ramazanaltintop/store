@@ -13,14 +13,48 @@ namespace Business.Concrete
             _dalCoordinator = dalCoordinator;
         }
 
-        public List<Product> GetAllProducts()
+        public void CreateOneProduct(Product product)
         {
-            return _dalCoordinator.Product.GetAll();
+            _dalCoordinator.Product.CreateOneProduct(product);
+            _dalCoordinator.Save();
         }
 
-        public Product? GetProductById(int id)
+        public void DeleteOneProduct(int id)
         {
-            return _dalCoordinator.Product.GetByCondition(p => p.ProductId.Equals(id));
+            var entity = _dalCoordinator.Product.GetOneProduct(id, false);
+            if (entity is null)
+            {
+                throw new Exception("Product not found!");
+            }
+            _dalCoordinator.Product.DeleteOneProduct(entity);
+            _dalCoordinator.Save();
+        }
+
+        public IEnumerable<Product> GetAllProducts(bool trackChanges)
+        {
+            return _dalCoordinator.Product.GetAllProducts(trackChanges);
+        }
+
+        public Product? GetOneProduct(int id, bool trackChanges)
+        {
+            var entity = _dalCoordinator.Product.GetOneProduct(id, trackChanges);
+            if (entity is null)
+            {
+                throw new Exception("Product not found!");
+            }
+            return entity;
+        }
+
+        public void UpdateOneProduct(Product product)
+        {
+            var entity  = _dalCoordinator.Product.GetOneProduct(product.ProductId, true);
+            if (entity is null)
+            {
+                throw new Exception("Product not found!");
+            }
+            entity.ProductName = product.ProductName;
+            entity.Price = product.Price;
+            _dalCoordinator.Save();
         }
     }
 }

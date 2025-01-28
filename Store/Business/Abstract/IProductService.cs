@@ -4,7 +4,10 @@ namespace Business.Abstract
 {
     public interface IProductService
     {
-        List<Product> GetAllProducts();
-        Product? GetProductById(int id);
+        IEnumerable<Product> GetAllProducts(bool trackChanges);
+        Product? GetOneProduct(int id, bool trackChanges);
+        void CreateOneProduct(Product product);
+        void UpdateOneProduct(Product product);
+        void DeleteOneProduct(int id);
     }
 }

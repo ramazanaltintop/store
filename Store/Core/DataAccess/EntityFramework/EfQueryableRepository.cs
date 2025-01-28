@@ -16,39 +16,33 @@ namespace Core.DataAccess.EntityFramework
             _dbSet = _context.Set<T>();
         }
 
-        public T Create(T entity)
+        public void Create(T entity)
         {
             _dbSet.Add(entity);
-            _context.SaveChanges();
-            return entity;
         }
 
-        public T Delete(T entity)
+        public void Delete(T entity)
         {
             _dbSet.Remove(entity);
-            _context.SaveChanges();
-            return entity;
         }
 
-        public IQueryable<T> GetAll(bool trackChanges)
+        public IQueryable<T> FindAll(bool trackChanges)
         {
             return trackChanges
                 ? _dbSet
                 : _dbSet.AsNoTracking();
         }
 
-        public T? Get(Expression<Func<T, bool>> expression, bool trackChanges)
+        public T? FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges)
         {
             return trackChanges
                 ? _dbSet.Where(expression).SingleOrDefault()
                 : _dbSet.Where(expression).AsNoTracking().SingleOrDefault();
         }
 
-        public T Update(T entity)
+        public void Update(T entity)
         {
             _dbSet.Update(entity);
-            _context.SaveChanges();
-            return entity;
         }
     }
 }
