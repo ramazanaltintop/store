@@ -18,9 +18,9 @@ namespace Business.Concrete
             return _dalCoordinator.Product.GetAll();
         }
 
-        public Product GetProductById(int id)
+        public Product? GetProductById(int id)
         {
-            return _dalCoordinator.Product.Get(p => p.ProductId.Equals(id));
+            return _dalCoordinator.Product.GetByCondition(p => p.ProductId.Equals(id));
         }
     }
 }

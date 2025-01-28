@@ -29,7 +29,7 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> filter)
+        public TEntity? GetByCondition(Expression<Func<TEntity, bool>> filter)
         {
             using (var context = new TContext())
             {
