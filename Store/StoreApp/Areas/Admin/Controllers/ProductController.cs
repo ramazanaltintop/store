@@ -1,6 +1,8 @@
 using Business.Coordinators;
 using Entities.Concrete;
+using Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace StoreApp.Areas.Admin.Controllers
 {
@@ -21,16 +23,27 @@ namespace StoreApp.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Categories = GetAllCategoriesSelectList();
             return View();
+        }
+
+        private SelectList GetAllCategoriesSelectList()
+        {
+            return new SelectList(
+                _coordinator.CategoryService.GetAllCategories(false),
+                "CategoryId",
+                "CategoryName",
+                "1"
+            );
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([FromForm] Product product)
+        public IActionResult Create([FromForm] ProductDtoForInsertion productDto)
         {
             if (ModelState.IsValid)
             {
-                _coordinator.ProductService.CreateOneProduct(product);
+                _coordinator.ProductService.CreateOneProduct(productDto);
                 return RedirectToAction("Index");
             }
             return View();
@@ -38,16 +51,17 @@ namespace StoreApp.Areas.Admin.Controllers
 
         public IActionResult Update([FromRoute(Name = "id")] int id)
         {
-            return View(_coordinator.ProductService.GetOneProduct(id, false));
+            ViewBag.Categories = GetAllCategoriesSelectList();
+            return View(_coordinator.ProductService.GetOneProductForUpdate(id, false));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update([FromForm] Product product)
+        public IActionResult Update([FromForm] ProductDtoForUpdate productDto)
         {
             if (ModelState.IsValid)
             {
-                _coordinator.ProductService.UpdateOneProduct(product);
+                _coordinator.ProductService.UpdateOneProduct(productDto);
                 return RedirectToAction("Index");
             }
             return View();

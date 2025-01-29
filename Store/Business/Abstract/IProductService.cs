@@ -1,4 +1,5 @@
 using Entities.Concrete;
+using Entities.Dtos;
 
 namespace Business.Abstract
 {
@@ -6,8 +7,9 @@ namespace Business.Abstract
     {
         IEnumerable<Product> GetAllProducts(bool trackChanges);
         Product? GetOneProduct(int id, bool trackChanges);
-        void CreateOneProduct(Product product);
-        void UpdateOneProduct(Product product);
+        void CreateOneProduct(ProductDtoForInsertion productDto);
+        void UpdateOneProduct(ProductDtoForUpdate productDto);
         void DeleteOneProduct(int id);
+        ProductDtoForUpdate GetOneProductForUpdate(int id, bool trackChanges);
     }
 }

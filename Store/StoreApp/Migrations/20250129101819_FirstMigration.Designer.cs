@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    [Migration("20250126130405_FirstMigration")]
+    [Migration("20250129101819_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -19,19 +19,52 @@ namespace StoreApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
 
+            modelBuilder.Entity("Entities.Concrete.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Book"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Electronic"
+                        });
+                });
+
             modelBuilder.Entity("Entities.Concrete.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProductName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("ProductId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
 
@@ -39,33 +72,66 @@ namespace StoreApp.Migrations
                         new
                         {
                             ProductId = 1,
+                            CategoryId = 2,
                             Price = 24000m,
                             ProductName = "Computer"
                         },
                         new
                         {
                             ProductId = 2,
+                            CategoryId = 2,
                             Price = 1000m,
                             ProductName = "Keyboard"
                         },
                         new
                         {
                             ProductId = 3,
+                            CategoryId = 2,
                             Price = 600m,
                             ProductName = "Mouse"
                         },
                         new
                         {
                             ProductId = 4,
+                            CategoryId = 2,
                             Price = 10000m,
                             ProductName = "Monitor"
                         },
                         new
                         {
                             ProductId = 5,
+                            CategoryId = 2,
                             Price = 2500m,
                             ProductName = "Deck"
+                        },
+                        new
+                        {
+                            ProductId = 6,
+                            CategoryId = 1,
+                            Price = 250m,
+                            ProductName = "History"
+                        },
+                        new
+                        {
+                            ProductId = 7,
+                            CategoryId = 1,
+                            Price = 2500m,
+                            ProductName = "Theatre"
                         });
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Product", b =>
+                {
+                    b.HasOne("Entities.Concrete.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

@@ -25,6 +25,8 @@ builder.Services.AddScoped<IDalCoordinator, DalCoordinator>();
 builder.Services.AddScoped<IProductDal, EfProductDal>();
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 
+builder.Services.AddAutoMapper(typeof(Program));
+
 var app = builder.Build();
 
 app.UseStaticFiles();

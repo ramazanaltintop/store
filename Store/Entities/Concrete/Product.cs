@@ -5,12 +5,10 @@ namespace Entities.Concrete
 {
     public class Product : IEntity
     {
-        public int ProductId { get; set; }
-        
-        [Required(ErrorMessage = "ProductName is required")]
+        public int ProductId { get; set; }          // Primary Key
+        public int? CategoryId { get; set; }        // Foreign Key        
         public String? ProductName { get; set; } = String.Empty;
-
-        [Required(ErrorMessage = "Price is required")]
         public decimal Price { get; set; }
+        public Category? Category { get; set; }     // Navigation Property
     }
 }

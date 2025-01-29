@@ -1,3 +1,5 @@
+using System.Reflection;
+using DataAccess.Config;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,19 +25,13 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Product>()
-            .HasData(
-                new Product { ProductId = 1, ProductName = "Computer", Price = 24_000 },
-                new Product { ProductId = 2, ProductName = "Keyboard", Price = 1_000 },
-                new Product { ProductId = 3, ProductName = "Mouse", Price = 600 },
-                new Product { ProductId = 4, ProductName = "Monitor", Price = 10_000 },
-                new Product { ProductId = 5, ProductName = "Deck", Price = 2_500 }
-            );
-            modelBuilder.Entity<Category>()
-            .HasData(
-                new Category { CategoryId = 1, CategoryName = "Book" },
-                new Category { CategoryId = 2, CategoryName = "Electronic" }
-            );
+            
+            // Method 1
+            // modelBuilder.ApplyConfiguration(new ProductConfig());
+            // modelBuilder.ApplyConfiguration(new CategoryConfig());
+
+            // Method 2
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
