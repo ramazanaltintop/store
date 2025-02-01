@@ -19,6 +19,9 @@ builder.Services.AddDbContext<ProductDbContext>(options =>
     b => b.MigrationsAssembly("StoreApp"));
 });
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+
 builder.Services.AddScoped<IServiceCoordinator, ServiceCoordinator>();
 builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
@@ -34,6 +37,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 
 app.UseStaticFiles();
+app.UseSession();
+
 app.UseHttpsRedirection();
 app.UseRouting();
 
