@@ -2,7 +2,6 @@ using Business.Coordinators;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using StoreApp.Infrastructure.Extensions;
 
 namespace StoreApp.Pages
 {
@@ -35,7 +34,7 @@ namespace StoreApp.Pages
                 Cart.AddItem(product, 1);
                 // HttpContext.Session.SetJson<Cart>("cart", Cart);
             }
-            return Page();
+            return RedirectToPage(new {ReturnUrl = returnUrl});
         }
 
         public IActionResult OnPostRemove(int id, string returnUrl)
