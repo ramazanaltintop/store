@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
-using Core.Entities;
+using Entities.Abstract;
 
-namespace Core.DataAccess
+namespace DataAccess.Abstract
 {
     public interface IQueryableRepository<T> where T: class, IEntity, new()
     {

@@ -1,7 +1,7 @@
 using AutoMapper;
 using Business.Abstract;
-using Core.Entities;
 using DataAccess.Coordinators;
+using Entities.Abstract;
 using Entities.Concrete;
 using Entities.Dtos;
 
