@@ -34,7 +34,7 @@ builder.Services.AddScoped<IDalCoordinator, DalCoordinator>();
 builder.Services.AddScoped<IProductDal, EfProductDal>();
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 
-builder.Services.AddSingleton<Cart>();
+builder.Services.AddScoped<Cart>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
