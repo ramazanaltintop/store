@@ -7,6 +7,7 @@ using DataAccess.Concrete.EntityFramework.Contexts;
 using DataAccess.Coordinators;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
+using StoreApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +35,7 @@ builder.Services.AddScoped<IDalCoordinator, DalCoordinator>();
 builder.Services.AddScoped<IProductDal, EfProductDal>();
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 
-builder.Services.AddScoped<Cart>();
+builder.Services.AddScoped<Cart>(c => SessionCart.GetCart(c));
 
 builder.Services.AddAutoMapper(typeof(Program));
 
