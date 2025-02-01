@@ -20,7 +20,11 @@ builder.Services.AddDbContext<ProductDbContext>(options =>
 });
 
 builder.Services.AddDistributedMemoryCache();
-builder.Services.AddSession();
+builder.Services.AddSession(options => {
+    options.Cookie.Name = "StoreApp.Session";
+    options.IdleTimeout = TimeSpan.FromMinutes(10);
+});
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddScoped<IServiceCoordinator, ServiceCoordinator>();
 builder.Services.AddScoped<IProductService, ProductManager>();
