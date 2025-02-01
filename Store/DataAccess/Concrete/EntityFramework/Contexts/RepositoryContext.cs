@@ -5,16 +5,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework.Contexts
 {
-    public class ProductDbContext : DbContext
+    public class RepositoryContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public ProductDbContext()
+        public RepositoryContext()
         {
 
         }
-        public ProductDbContext(DbContextOptions<ProductDbContext> options)
+        public RepositoryContext(DbContextOptions<RepositoryContext> options)
         : base(options)
         {
 

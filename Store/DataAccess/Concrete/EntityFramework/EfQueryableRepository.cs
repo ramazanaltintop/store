@@ -9,10 +9,10 @@ namespace DataAccess.Concrete.EntityFramework
     public abstract class EfQueryableRepository<T> : IQueryableRepository<T>
     where T : class, IEntity, new()
     {
-        protected readonly ProductDbContext _context;
+        protected readonly RepositoryContext _context;
         protected readonly DbSet<T> _dbSet;
 
-        protected EfQueryableRepository(ProductDbContext context)
+        protected EfQueryableRepository(RepositoryContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();

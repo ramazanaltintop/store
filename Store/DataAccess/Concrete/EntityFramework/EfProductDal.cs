@@ -6,7 +6,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfProductDal : EfQueryableRepository<Product>, IProductDal
     {
-        public EfProductDal(ProductDbContext context) : base(context)
+        public EfProductDal(RepositoryContext context) : base(context)
         {
         }
 

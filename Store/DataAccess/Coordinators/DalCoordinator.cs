@@ -11,7 +11,7 @@ namespace DataAccess.Concrete.EntityFramework
         private readonly IProductDal _productDal;
         private readonly ICategoryDal _categoryDal;
 
-        public DalCoordinator(ProductDbContext context, IProductDal productDal, ICategoryDal categoryDal)
+        public DalCoordinator(RepositoryContext context, IProductDal productDal, ICategoryDal categoryDal)
         {
             _context = context;
             _productDal = productDal;

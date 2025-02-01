@@ -11,7 +11,7 @@ namespace StoreApp.Pages
 
         public Cart Cart { get; set; }
 
-        public string ReturnUrl { get; set; }
+        public string? ReturnUrl { get; set; }
 
         public CartModel(IServiceCoordinator coordinator, Cart cartService)
         {

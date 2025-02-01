@@ -6,7 +6,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfOrderDal : EfQueryableRepository<Order>, IOrderDal
     {
-        public EfOrderDal(ProductDbContext context) : base(context)
+        public EfOrderDal(RepositoryContext context) : base(context)
         {
         }
 
