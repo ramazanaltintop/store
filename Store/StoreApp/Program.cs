@@ -1,10 +1,10 @@
 using Business.Abstract;
 using Business.Concrete;
-using Business.Coordinators;
+using Business.ServiceManager;
 using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.EntityFramework.Contexts;
-using DataAccess.Coordinators;
+using DataAccess.Repositories.EntityFramework;
+using DataAccess.RepositoryManager;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using StoreApp.Models;
@@ -27,13 +27,13 @@ builder.Services.AddSession(options => {
 });
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-builder.Services.AddScoped<IServiceCoordinator, ServiceCoordinator>();
+builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
-builder.Services.AddScoped<IDalCoordinator, DalCoordinator>();
-builder.Services.AddScoped<IProductDal, EfProductDal>();
-builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+builder.Services.AddScoped<IProductRepository, EfCoreProductRepository>();
+builder.Services.AddScoped<ICategoryRepository, EfCoreCategoryRepository>();
 
 builder.Services.AddScoped<Cart>(c => SessionCart.GetCart(c));
 

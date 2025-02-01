@@ -1,20 +1,20 @@
-using Business.Coordinators;
+using Business.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StoreApp.Components
 {
     public class CategoriesMenuViewComponent : ViewComponent
     {
-        private readonly IServiceCoordinator _coordinator;
+        private readonly IServiceManager _manager;
 
-        public CategoriesMenuViewComponent(IServiceCoordinator coordinator)
+        public CategoriesMenuViewComponent(IServiceManager manager)
         {
-            _coordinator = coordinator;
+            _manager = manager;
         }
 
         public IViewComponentResult Invoke()
         {
-            return View(_coordinator.CategoryService.GetAllCategories(false));
+            return View(_manager.CategoryService.GetAllCategories(false));
         }
     }
 }

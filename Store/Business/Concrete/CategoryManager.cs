@@ -1,21 +1,21 @@
 using Business.Abstract;
-using DataAccess.Coordinators;
+using DataAccess.RepositoryManager;
 using Entities.Concrete;
 
 namespace Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        private IDalCoordinator _dalCoordinator;
+        private IRepositoryManager _manager;
 
-        public CategoryManager(IDalCoordinator dalCoordinator)
+        public CategoryManager(IRepositoryManager manager)
         {
-            _dalCoordinator = dalCoordinator;
+            _manager = manager;
         }
 
         public IEnumerable<Category> GetAllCategories(bool trackChanges)
         {
-            return _dalCoordinator.Category.GetAllCategories(trackChanges);
+            return _manager.Category.GetAllCategories(trackChanges);
         }
     }
 }

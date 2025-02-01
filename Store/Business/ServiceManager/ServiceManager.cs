@@ -1,13 +1,13 @@
 using Business.Abstract;
 
-namespace Business.Coordinators
+namespace Business.ServiceManager
 {
-    public class ServiceCoordinator : IServiceCoordinator
+    public class ServiceManager : IServiceManager
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
 
-        public ServiceCoordinator(IProductService productService, ICategoryService categoryService)
+        public ServiceManager(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
             _categoryService = categoryService;

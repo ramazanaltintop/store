@@ -1,21 +1,20 @@
-using Business.Coordinators;
-using Entities.Concrete;
+using Business.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StoreApp.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly IServiceCoordinator _coordinator;
+        private readonly IServiceManager _manager;
 
-        public CategoryController(IServiceCoordinator coordinator)
+        public CategoryController(IServiceManager manager)
         {
-            _coordinator = coordinator;
+            _manager = manager;
         }
 
         public IActionResult Index()
         {
-            return View(_coordinator.CategoryService.GetAllCategories(false));
+            return View(_manager.CategoryService.GetAllCategories(false));
         }
     }
 }

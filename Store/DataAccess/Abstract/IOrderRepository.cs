@@ -1,8 +1,9 @@
+using DataAccess.Base;
 using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface IOrderDal : IQueryableRepository<Order>
+    public interface IOrderRepository : IRepositoryBase<Order>
     {
         IQueryable<Order> Orders { get; }
         Order? GetOneOrder(int id);

@@ -1,8 +1,9 @@
+using DataAccess.Base;
 using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface ICategoryDal : IQueryableRepository<Category>
+    public interface ICategoryRepository : IRepositoryBase<Category>
     {
         IQueryable<Category> GetAllCategories(bool trackChanges);
     }

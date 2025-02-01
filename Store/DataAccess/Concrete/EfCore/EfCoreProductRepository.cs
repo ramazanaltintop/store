@@ -1,12 +1,13 @@
 using DataAccess.Abstract;
+using DataAccess.Base;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete;
 
-namespace DataAccess.Concrete.EntityFramework
+namespace DataAccess.Repositories.EntityFramework
 {
-    public class EfProductDal : EfQueryableRepository<Product>, IProductDal
+    public class EfCoreProductRepository : RepositoryBase<Product>, IProductRepository
     {
-        public EfProductDal(RepositoryContext context) : base(context)
+        public EfCoreProductRepository(RepositoryContext context) : base(context)
         {
         }
 

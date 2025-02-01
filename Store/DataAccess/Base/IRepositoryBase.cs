@@ -1,9 +1,9 @@
 using System.Linq.Expressions;
 using Entities.Abstract;
 
-namespace DataAccess.Abstract
+namespace DataAccess.Base
 {
-    public interface IQueryableRepository<T> where T: class, IEntity, new()
+    public interface IRepositoryBase<T> where T: class, IEntity, new()
     {
         IQueryable<T> FindAll(bool trackChanges);
         T? FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges);

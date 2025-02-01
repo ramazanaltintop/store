@@ -1,4 +1,4 @@
-using Business.Coordinators;
+using Business.ServiceManager;
 using Entities.Concrete;
 using Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -9,16 +9,16 @@ namespace StoreApp.Areas.Admin.Controllers
     [Area("Admin")]
     public class ProductController : Controller
     {
-        private readonly IServiceCoordinator _coordinator;
+        private readonly IServiceManager _manager;
 
-        public ProductController(IServiceCoordinator coordinator)
+        public ProductController(IServiceManager manager)
         {
-            _coordinator = coordinator;
+            _manager = manager;
         }
 
         public IActionResult Index()
         {
-            return View(_coordinator.ProductService.GetAllProducts(false));
+            return View(_manager.ProductService.GetAllProducts(false));
         }
 
         public IActionResult Create()
@@ -41,7 +41,7 @@ namespace StoreApp.Areas.Admin.Controllers
                     await file.CopyToAsync(stream);
                 }
                 productDto.ImageUrl = String.Concat("/images/", file.FileName);
-                _coordinator.ProductService.CreateOneProduct(productDto);
+                _manager.ProductService.CreateOneProduct(productDto);
                 return RedirectToAction("Index");
             }
             return View();
@@ -50,7 +50,7 @@ namespace StoreApp.Areas.Admin.Controllers
         private SelectList GetAllCategoriesSelectList()
         {
             return new SelectList(
-                _coordinator.CategoryService.GetAllCategories(false),
+                _manager.CategoryService.GetAllCategories(false),
                 "CategoryId",
                 "CategoryName",
                 "1"
@@ -60,7 +60,7 @@ namespace StoreApp.Areas.Admin.Controllers
         public IActionResult Update([FromRoute(Name = "id")] int id)
         {
             ViewBag.Categories = GetAllCategoriesSelectList();
-            return View(_coordinator.ProductService.GetOneProductForUpdate(id, false));
+            return View(_manager.ProductService.GetOneProductForUpdate(id, false));
         }
 
         [HttpPost]
@@ -75,7 +75,7 @@ namespace StoreApp.Areas.Admin.Controllers
                     await file.CopyToAsync(stream);
                 }
                 productDto.ImageUrl = String.Concat("/images/", file.FileName);
-                _coordinator.ProductService.UpdateOneProduct(productDto);
+                _manager.ProductService.UpdateOneProduct(productDto);
                 return RedirectToAction("Index");
             }
             return View();
@@ -84,7 +84,7 @@ namespace StoreApp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Delete([FromRoute(Name = "id")] int id)
         {
-            _coordinator.ProductService.DeleteOneProduct(id);
+            _manager.ProductService.DeleteOneProduct(id);
             return RedirectToAction("Index");
         }
     }

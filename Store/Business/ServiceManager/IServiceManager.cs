@@ -1,8 +1,8 @@
 using Business.Abstract;
 
-namespace Business.Coordinators
+namespace Business.ServiceManager
 {
-    public interface IServiceCoordinator
+    public interface IServiceManager
     {
         IProductService ProductService { get; }
         ICategoryService CategoryService { get; }

@@ -1,12 +1,13 @@
 using DataAccess.Abstract;
+using DataAccess.Base;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete;
 
-namespace DataAccess.Concrete.EntityFramework
+namespace DataAccess.Repositories.EntityFramework
 {
-    public class EfOrderDal : EfQueryableRepository<Order>, IOrderDal
+    public class EfCoreOrderRepository : RepositoryBase<Order>, IOrderRepository
     {
-        public EfOrderDal(RepositoryContext context) : base(context)
+        public EfCoreOrderRepository(RepositoryContext context) : base(context)
         {
         }
 

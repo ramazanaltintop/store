@@ -1,18 +1,17 @@
 using System.Linq.Expressions;
-using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Abstract;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Concrete.EntityFramework
+namespace DataAccess.Base
 {
-    public abstract class EfQueryableRepository<T> : IQueryableRepository<T>
+    public abstract class RepositoryBase<T> : IRepositoryBase<T>
     where T : class, IEntity, new()
     {
         protected readonly RepositoryContext _context;
         protected readonly DbSet<T> _dbSet;
 
-        protected EfQueryableRepository(RepositoryContext context)
+        protected RepositoryBase(RepositoryContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();

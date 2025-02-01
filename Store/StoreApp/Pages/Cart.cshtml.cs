@@ -1,4 +1,4 @@
-using Business.Coordinators;
+using Business.ServiceManager;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,15 +7,15 @@ namespace StoreApp.Pages
 {
     public class CartModel : PageModel
     {
-        private readonly IServiceCoordinator _coordinator;
+        private readonly IServiceManager _manager;
 
         public Cart Cart { get; set; }
 
         public string? ReturnUrl { get; set; }
 
-        public CartModel(IServiceCoordinator coordinator, Cart cartService)
+        public CartModel(IServiceManager manager, Cart cartService)
         {
-            _coordinator = coordinator;
+            _manager = manager;
             Cart = cartService;
         }
 
@@ -27,7 +27,7 @@ namespace StoreApp.Pages
 
         public IActionResult OnPost(int productId, string returnUrl)
         {
-            Product? product = _coordinator.ProductService.GetOneProduct(productId, false);
+            Product? product = _manager.ProductService.GetOneProduct(productId, false);
             if (product is not null)
             {
                 // Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();

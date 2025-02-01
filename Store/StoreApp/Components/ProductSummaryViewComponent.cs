@@ -1,20 +1,20 @@
-using Business.Coordinators;
+using Business.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StoreApp.Components
 {
     public class ProductSummaryViewComponent : ViewComponent
     {
-        private readonly IServiceCoordinator _coordinator;
+        private readonly IServiceManager _manager;
 
-        public ProductSummaryViewComponent(IServiceCoordinator coordinator)
+        public ProductSummaryViewComponent(IServiceManager manager)
         {
-            _coordinator = coordinator;
+            _manager = manager;
         }
 
         public string Invoke()
         {
-            return _coordinator.ProductService.GetAllProducts(false).Count().ToString();
+            return _manager.ProductService.GetAllProducts(false).Count().ToString();
         }
     }
 }

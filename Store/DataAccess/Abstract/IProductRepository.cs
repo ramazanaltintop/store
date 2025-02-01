@@ -1,8 +1,9 @@
+using DataAccess.Base;
 using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface IProductDal : IQueryableRepository<Product>
+    public interface IProductRepository : IRepositoryBase<Product>
     {
         IQueryable<Product> GetAllProducts(bool trackChanges);
         Product? GetOneProduct(int id, bool trackChanges);
