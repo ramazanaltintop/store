@@ -3,7 +3,7 @@
 
 <div class="text-center">
     <div class="display-6">
-        Cart (@Model.Cart.Lines.Count())
+        Cart (@await Component.InvokeAsync("CartSummary"))
     </div>
 </div>
 
