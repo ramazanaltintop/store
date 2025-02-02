@@ -24,4 +24,6 @@ app.ConfigureRoute();
 
 app.MapRazorPages();
 
+app.ConfigureAndCheckMigration();
+
 app.Run();
