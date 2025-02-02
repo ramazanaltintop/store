@@ -3,10 +3,6 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "bootstrap@5.3.3",
-      "destination": "wwwroot/lib/bootstrap"
-    },
-    {
       "library": "font-awesome@6.7.2",
       "destination": "wwwroot/lib/font-awesome"
     },
@@ -17,6 +13,10 @@
     {
       "library": "admin-lte@3.2.0",
       "destination": "wwwroot/lib/admin-lte"
+    },
+    {
+      "library": "bootstrap@5.3.3",
+      "destination": "wwwroot/lib/bootstrap"
     }
   ]
 }

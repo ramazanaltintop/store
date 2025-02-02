@@ -1,12 +1,12 @@
 @model ProductDtoForInsertion
 
 <div class="text-center">
-    <div class="display-6">
-        Create Product
+    <div class="content-header">
+        <h1 class="m-0">Create Product</h1>
     </div>
 </div>
 
-<form method="post" asp-action="Create" enctype="multipart/form-data">
+<form method="post" asp-action="Create" enctype="multipart/form-data" class="ms-3 me-3">
 
     <div class="text-danger my-3" asp-validation-summary="All"></div>
 
@@ -24,7 +24,7 @@
         <label asp-for="Summary"></label>
         <textarea class="form-control" rows="4" asp-for="Summary"></textarea>
     </div>
-    
+
     <div class="form-group my-3">
         <label asp-for="Price"></label>
         <input class="form-control" asp-for="Price" />
@@ -37,12 +37,12 @@
 
     <div class="form-group my-3">
         <div class="btn-group">
-        <button class="btn btn-primary" type="submit">
-            <i class="fa-solid fa-floppy-disk"></i> Save
-        </button>
-        <a class="btn btn-outline-primary" asp-action="Index">
-            <i class="fa-solid fa-list"></i> Products
-        </a>
+            <button class="btn btn-primary" type="submit">
+                <i class="fa-solid fa-floppy-disk"></i> Save
+            </button>
+            <a class="btn btn-outline-primary" asp-action="Index">
+                <i class="fa-solid fa-list"></i> Products
+            </a>
         </div>
     </div>
 </form>
