@@ -6,6 +6,7 @@ namespace Business.Abstract
     public interface IProductService
     {
         IEnumerable<Product> GetAllProducts(bool trackChanges);
+        IEnumerable<Product> GetShowcaseProducts(bool trackChanges);
         Product? GetOneProduct(int id, bool trackChanges);
         void CreateOneProduct(ProductDtoForInsertion productDto);
         void UpdateOneProduct(ProductDtoForUpdate productDto);
