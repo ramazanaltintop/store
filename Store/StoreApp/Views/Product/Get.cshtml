@@ -16,19 +16,19 @@
     <h2></h2>
     <p></p>
     <div class="btn-group">
-        <a class="btn btn-outline-primary me-3" asp-controller="Home" asp-action="Index">
+        <a class="btn btn-outline-primary rounded-2 me-3" asp-controller="Home" asp-action="Index">
             <i class="fa-solid fa-house"></i> Home
         </a>
 
         <form id="@Model?.ProductId" asp-page="/cart" method="post">
             <input type="hidden" asp-for="ProductId" />
             <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-            <button type="submit" class="btn btn-outline-success me-3">
+            <button type="submit" class="btn btn-outline-success rounded-2 me-3">
                 <i class="fa-solid fa-cart-plus"></i>
             </button>
         </form>
 
-        <a class="btn btn-outline-primary" asp-controller="Product" asp-action="Index">
+        <a class="btn btn-outline-primary rounded-2" asp-controller="Product" asp-action="Index">
             <i class="fa-solid fa-list"></i> Products
         </a>
     </div>
