@@ -22,6 +22,12 @@ namespace DataAccess.Repositories.EntityFramework
             return FindByCondition(p => p.ProductId.Equals(id), trackChanges);
         }
 
+        public IQueryable<Product> GetShowcaseProducts(bool trackChanges)
+        {
+            return FindAll(trackChanges)
+                .Where(p => p.ShowCase.Equals(true));
+        }
+
         public void UpdateOneProduct(Product product) => Update(product);
     }
 }
