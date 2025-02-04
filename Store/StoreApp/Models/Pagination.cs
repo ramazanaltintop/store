@@ -6,6 +6,6 @@ namespace StoreApp.Models
         public int ItemsPerPage { get; set; }
         public int CurrentPage { get; set; }
         public int TotalPages =>
-            (int)Math.Ceiling((decimal)(TotalItems / ItemsPerPage));
+            (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage);
     }
 }
