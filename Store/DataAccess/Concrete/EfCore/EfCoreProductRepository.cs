@@ -24,7 +24,8 @@ namespace DataAccess.Repositories.EntityFramework
             return _context
                 .Products
                 .FilteredByCategoryId(parameters.CategoryId)
-                .FilteredBySearchTerm(parameters.SearchTerm);
+                .FilteredBySearchTerm(parameters.SearchTerm)
+                .FilteredByPrice(parameters.MinPrice, parameters.MaxPrice, parameters.IsValidPrice);
         }
 
         public Product? GetOneProduct(int id, bool trackChanges)
