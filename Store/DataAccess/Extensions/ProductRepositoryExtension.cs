@@ -12,5 +12,15 @@ namespace DataAccess.Extensions
             else
                 return products.Where(product => product.CategoryId.Equals(categoryId));
         }
+
+        public static IQueryable<Product> FilteredBySearchTerm(this IQueryable<Product> products,
+            String? searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+                return products;
+            else
+                return products.Where(product => product.ProductName.ToLower()
+                    .Contains(searchTerm.ToLower()));
+        }
     }
 }
