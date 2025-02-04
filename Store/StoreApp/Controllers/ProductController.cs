@@ -16,7 +16,7 @@ namespace StoreApp.Controllers
 
         public IActionResult Index(ProductRequestParameters parameters)
         {
-            var products = _manager.ProductService.GetAllProducts(false);
+            var products = _manager.ProductService.GetAllProductsWithDetails(parameters);
             var pagination = new Pagination()
             {
                 CurrentPage = parameters.PageNumber,
