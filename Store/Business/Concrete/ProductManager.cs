@@ -44,6 +44,15 @@ namespace Business.Concrete
             return _manager.Product.GetAllProductsWithDetails(parameters);
         }
 
+        public IEnumerable<Product> GetLastestProducts(int n, bool trackChanges)
+        {
+            return _manager
+                .Product
+                .FindAll(trackChanges)
+                .OrderByDescending(p => p.ProductId)
+                .Take(n);
+        }
+
         public Product? GetOneProduct(int id, bool trackChanges)
         {
             var entity = _manager.Product.GetOneProduct(id, trackChanges);
