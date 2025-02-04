@@ -1,13 +1,13 @@
 using DataAccess.Abstract;
 using DataAccess.Base;
 using DataAccess.Concrete.EntityFramework.Contexts;
+using DataAccess.Extensions;
 using Entities.Concrete;
 using Entities.RequestParameters;
-using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories.EntityFramework
 {
-    public class EfCoreProductRepository : RepositoryBase<Product>, IProductRepository
+    public sealed class EfCoreProductRepository : RepositoryBase<Product>, IProductRepository
     {
         public EfCoreProductRepository(RepositoryContext context) : base(context)
         {
@@ -21,14 +21,9 @@ namespace DataAccess.Repositories.EntityFramework
 
         public IQueryable<Product> GetAllProductsWithDetails(ProductRequestParameters parameters)
         {
-            return parameters.CategoryId is null
-                ? _context
-                    .Products
-                    .Include(product => product.Category)
-                : _context
-                    .Products
-                    .Include(product => product.Category)
-                    .Where(product => product.CategoryId.Equals(parameters.CategoryId));
+            return _context
+                .Products
+                .FilteredByCategoryId(parameters.CategoryId);
         }
 
         public Product? GetOneProduct(int id, bool trackChanges)
