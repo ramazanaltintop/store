@@ -23,7 +23,8 @@ namespace DataAccess.Repositories.EntityFramework
         {
             return _context
                 .Products
-                .FilteredByCategoryId(parameters.CategoryId);
+                .FilteredByCategoryId(parameters.CategoryId)
+                .FilteredBySearchTerm(parameters.SearchTerm);
         }
 
         public Product? GetOneProduct(int id, bool trackChanges)
