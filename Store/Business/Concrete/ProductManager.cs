@@ -4,6 +4,7 @@ using DataAccess.RepositoryManager;
 using Entities.Abstract;
 using Entities.Concrete;
 using Entities.Dtos;
+using Entities.RequestParameters;
 
 namespace Business.Concrete
 {
@@ -36,6 +37,11 @@ namespace Business.Concrete
         public IEnumerable<Product> GetAllProducts(bool trackChanges)
         {
             return _manager.Product.GetAllProducts(trackChanges);
+        }
+
+        public IEnumerable<Product> GetAllProductsWithDetails(ProductRequestParameters parameters)
+        {
+            return _manager.Product.GetAllProductsWithDetails(parameters);
         }
 
         public Product? GetOneProduct(int id, bool trackChanges)
