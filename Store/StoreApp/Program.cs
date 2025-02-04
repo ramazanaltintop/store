@@ -20,7 +20,7 @@ app.UseSession();
 app.UseHttpsRedirection();
 app.UseRouting();
 
-app.ConfigureRoute();
+app.AddCustomRoutes();
 
 app.MapRazorPages();
 

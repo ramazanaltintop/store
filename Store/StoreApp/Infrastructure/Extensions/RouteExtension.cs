@@ -2,7 +2,7 @@ namespace StoreApp.Infrastructure.Extensions
 {
     public static class RouteExtension
     {
-        public static void ConfigureRoute(this IEndpointRouteBuilder routeBuilder)
+        public static void AddCustomRoutes(this IEndpointRouteBuilder routeBuilder)
         {
             routeBuilder.MapAreaControllerRoute(
                 name: "Admin",
