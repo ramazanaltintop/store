@@ -22,5 +22,14 @@ namespace DataAccess.Extensions
                 return products.Where(product => product.ProductName.ToLower()
                     .Contains(searchTerm.ToLower()));
         }
+
+        public static IQueryable<Product> FilteredByPrice(this IQueryable<Product> products,
+            int minPrice, int maxPrice, bool isValidPrice)
+        {
+            if (isValidPrice)
+                return products.Where(product => product.Price >= minPrice && product.Price <= maxPrice);
+            else
+                return products;
+        }
     }
 }
