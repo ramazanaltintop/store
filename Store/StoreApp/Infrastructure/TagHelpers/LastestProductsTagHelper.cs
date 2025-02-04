@@ -24,7 +24,7 @@ namespace StoreApp.Infrastructure.TagHelpers
             h6.Attributes.Add("class", "lead");
 
             TagBuilder icon = new TagBuilder("i");
-            icon.Attributes.Add("class","fa-solid fa-box");
+            icon.Attributes.Add("class","fa-solid fa-box text-secondary");
 
             h6.InnerHtml.AppendHtml(icon);
             h6.InnerHtml.AppendHtml(" Lastest Products");
