@@ -26,4 +26,6 @@ app.MapRazorPages();
 
 app.ConfigureAndCheckMigration();
 
+app.ConfigureLocalization();
+
 app.Run();
