@@ -1,58 +1,101 @@
 @page "/cart"
 @model CartModel
 
-<div class="text-center mb-3">
-    <div class="display-6">
-        Cart (@await Component.InvokeAsync("CartSummary"))
+<h1
+    class="font-bold leading-snug tracking-tight text-slate-800 mx-auto my-6 w-full text-2xl lg:max-w-3xl lg:text-5xl text-center">
+    Cart (@await Component.InvokeAsync("CartSummary"))
+</h1>
+
+
+<div class="w-full flex justify-between items-center mb-3 mt-1 pl-3">
+    <div>
+        <h3 class="text-lg font-bold text-slate-800">Manage your Cart</h3>
+        <p class="text-slate-500">Overview of the products.</p>
     </div>
 </div>
 
-<table class="my-3">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Subtotal</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (CartLine line in @Model.Cart?.Lines ?? Enumerable.Empty<CartLine>())
-        {
+<div
+    class="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md rounded-lg bg-clip-border">
+    <table class="w-full text-left table-auto min-w-max">
+        <thead>
             <tr>
-                <td>@line.Product.ProductName</td>
-                <td>@line.Quantity</td>
-                <td>@line.Product.Price.ToString("c")</td>
-                <td>@((line.Product.Price * line.Quantity).ToString("c2"))</td>
-                <td>
-                    <form method="post" asp-page-handler="Remove">
-                        <input type="hidden" name="id" value="@line.Product.ProductId" />
-                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
-                        <button type="submit" class="btn btn-sm btn-danger">
-                            <i class="fa-solid fa-trash"></i>
-                            Remove
-                        </button>
-                    </form>
+                <th class="p-4 border-b border-slate-300 bg-slate-50 text-left">
+                    <p class="block text-sm font-normal leading-none text-slate-500">
+                        Product
+                    </p>
+                </th>
+                <th class="p-4 border-b border-slate-300 bg-slate-50 text-left">
+                    <p class="block text-sm font-normal leading-none text-slate-500">
+                        Quantity
+                    </p>
+                </th>
+                <th class="p-4 border-b border-slate-300 bg-slate-50 text-left">
+                    <p class="block text-sm font-normal leading-none text-slate-500">
+                        Price
+                    </p>
+                </th>
+                <th class="p-4 border-b border-slate-300 bg-slate-50 text-left">
+                    <p class="block text-sm font-normal leading-none text-slate-500">
+                        Subtotal
+                    </p>
+                </th>
+                <th class="p-4 border-b border-slate-300 bg-slate-50 ">
+                    <p class="block text-sm font-normal leading-none text-slate-500">
+                        Operations
+                    </p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartLine line in @Model.Cart?.Lines ?? Enumerable.Empty<CartLine>())
+            {
+                <tr class="hover:bg-slate-50 border-b border-slate-200">
+                    <td class="p-4 py-5">
+                        <p class="block font-semibold text-sm text-slate-800">@line.Product.ProductName</p>
+                    </td>
+                    <td class="p-4 py-5">
+                        <p class="block text-sm text-slate-800">@line.Quantity</p>
+                    </td>
+                    <td class="p-4 py-5">
+                        <p class="block text-sm text-slate-800">@line.Product.Price.ToString("c")</p>
+                    </td>
+                    <td class="p-4 py-5">
+                        <p class="block text-sm text-slate-800">@((line.Product.Price * line.Quantity).ToString("c2"))</p>
+                    </td>
+                    <td class="p-4 py-5">
+                        <div class="block text-center">
+                            <form method="post" asp-page-handler="Remove">
+                                <input type="hidden" name="id" value="@line.Product.ProductId" />
+                                <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                                <button type="submit" class="rounded-md bg-red-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-red-700 focus:shadow-none active:bg-red-700 hover:bg-red-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Remove
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="p-4 text-left font-bold text-slate-800 border-t border-slate-300">
+                    Total:
+                </td>
+                <td colspan="1" class="p-4 font-semibold text-slate-800 border-t border-slate-300 text-center">
+                    @Model.Cart?.ComputeTotalValue().ToString("c2")
                 </td>
             </tr>
-        }
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="4" class="text-end">Total : </td>
-            <td class="text-start text-danger">
-                @Model.Cart?.ComputeTotalValue().ToString("c2")
-            </td>
-        </tr>
-    </tfoot>
-</table>
+        </tfoot>
+    </table>
+</div>
 
-<div class="text-center my-3">
-    <div class="btn-group">
-        <a class="btn btn-primary" href="@Model?.ReturnUrl">
-            <i class="fa-solid fa-cart-shopping"></i> Continue Shopping
-        </a>
-        <a class="btn btn-primary ms-3" asp-controller="Order" asp-action="Checkout">Checkout</a>
-    </div>
+<div class="row flex justify-center my-3">
+    <a class="rounded-md rounded-r-none bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        href="@Model?.ReturnUrl">
+        <i class="fa-solid fa-cart-shopping"></i> Continue Shopping
+    </a>
+    <a class="rounded-md rounded-l-none bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        asp-controller="Order" asp-action="Checkout">Checkout
+    </a>
 </div>

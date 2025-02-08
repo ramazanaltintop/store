@@ -1,32 +1,35 @@
 @model Product
 
-<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-4 mb-3 d-flex justify-content-center">
-    <div class="card" style="width: 18rem;">
-        <div class="card-header text-center">
-            @Model?.ProductName
+<div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-80">
+    <div class="relative p-2.5 h-96 overflow-hidden rounded-xl bg-clip-border">
+        <img src="@Model?.ImageUrl" alt="@Model?.ProductName" class="h-full w-full object-cover rounded-md" />
+    </div>
+    <div class="p-4">
+        <div class="mb-2 flex items-center justify-between">
+            <p class="text-slate-800 text-xl font-semibold">
+                @Model?.ProductName
+            </p>
+            <p class="text-cyan-600 text-xl font-semibold">
+                @Model?.Price.ToString("C2")
+            </p>
         </div>
-        <img src="@Model?.ImageUrl" class="card-img-top p-3" alt="@Model?.ProductName">
-        <div class="card-body d-flex flex-column justify-content-end">
-            <div class="card-text">
-                <div class="text-danger text-center lead rounded-2">
-                    <strong>@Model?.Price.ToString("C2")</strong>
-                </div>
-            </div>
-            <h5 class="card-title"></h5>
-            <p class="card-text">@Model?.Summary</p>
-
-            <div class="btn btn-group">
-                <a class="btn btn-primary rounded-2" asp-controller="Product" asp-action="Get" asp-route-id="@Model?.ProductId">
-                    <i class="fa-solid fa-circle-info"></i> Get Details
-                </a>
-                <form id="@Model?.ProductId" asp-page="/cart" method="post">
-                    <input type="hidden" asp-for="ProductId">
-                    <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()">
-                    <button type="submit" class="btn btn-outline-primary rounded-2 ms-2">
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </button>
-                </form>
-            </div>
+        <p class="text-slate-600 leading-normal font-light">
+            @Model?.Summary
+        </p>
+        <div class="row flex w-full">
+            <form id="@Model?.ProductId" asp-page="/cart" method="post">
+                <input type="hidden" asp-for="ProductId">
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()">
+                <button type="submit"
+                    class="rounded-md w-full mt-6 bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                    <i class="fa-solid fa-cart-plus"></i>
+                </button>
+            </form>
+            <a
+                class="ms-3 rounded-md w-full mt-6 bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button" asp-controller="Product" asp-action="Get" asp-route-id="@Model?.ProductId">
+                Get Details
+            </a>
         </div>
     </div>
 </div>
