@@ -1,28 +1,29 @@
-<div class="my-3">
-    <h6 class="lead">
-        <i class="fa-solid fa-filter text-secondary"></i>
-        Filters
-    </h6>
-</div>
-
-<div class="my-3">
-    <form method="get" asp-action="Index">
+<div
+    class="my-3 relative flex w-full max-w-[20rem] flex-col rounded-xl bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
+    <div class="p-4 mb-2">
+        <h5 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+            Filter
+        </h5>
+    </div>
+    <nav class="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
+        <form method="get" asp-action="Index">
         <input type="hidden" name="categoryId" value="@(Context.Request.Query["categoryId"])" />
 
-        <div class="form-group my-3">
-            <input class="form-control" name="SearchTerm" placeholder="Product Name" />
+        <div class="my-3">
+            <input class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-500 hover:border-slate-300 shadow-lg shadow-gray-100 ring-4 ring-transparent focus:ring-slate-100" name="SearchTerm" placeholder="Product Name" />
         </div>
 
-        <div class="form-group my-3">
-            <input class="form-control" name="MinPrice" placeholder="Minimum Price" />
+        <div class="my-3">
+            <input class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-500 hover:border-slate-300 shadow-lg shadow-gray-100 ring-4 ring-transparent focus:ring-slate-100" name="MinPrice" placeholder="Minimum Price" />
         </div>
 
-        <div class="form-group my-3">
-            <input class="form-control" name="MaxPrice" placeholder="Maximum Price" />
+        <div class="my-3">
+            <input class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-500 hover:border-slate-300 shadow-lg shadow-gray-100 ring-4 ring-transparent focus:ring-slate-100" name="MaxPrice" placeholder="Maximum Price" />
         </div>
 
-        <div class="form-group my-3 text-center">
-            <button type="submit" class="btn btn-sm btn-primary form-control">Filter</button>
+        <div class="my-3 text-center">
+            <button type="submit" class="w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Filter</button>
         </div>
     </form>
+    </nav>
 </div>

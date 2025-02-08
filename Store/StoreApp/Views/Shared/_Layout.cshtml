@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css">
+    @* <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css"> *@
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.css">
     <link rel="stylesheet" href="~/css/site.css">
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
     <header>
         <partial name="_Navbar" />
         @RenderSection("Header", false)
     </header>
-    <div class="container">
+    <div class="container mx-auto">
         <main role="main" class="p-4">
             @RenderBody()
         </main>
@@ -24,7 +24,9 @@
         @RenderSection("Footer", false)
         <partial name="_Footer" />
     </footer>
-    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.13.8" defer></script>
+    @* <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script> *@
     <script src="~/lib/font-awesome/js/all.min.js"></script>
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/js/site.js"></script>

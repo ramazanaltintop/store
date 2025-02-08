@@ -1,35 +1,37 @@
 @model Product
 
+<h1
+    class="font-bold leading-snug tracking-tight text-slate-800 mx-auto my-6 w-full text-2xl lg:max-w-3xl lg:text-5xl text-center">
+    @Model.ProductName
+</h1>
+
 <div class="text-center">
-    <div class="row">
-        <div class="col-md-12">
-            <h6 class="display-6">
-                @Model.ProductName
-            </h6>
-            <img class="img-fluid shadow rounded-3 my-3" src="@Model?.ImageUrl" alt="@Model?.ProductName">
-            <p class="lead text-danger my-3">
+    <div class="flex justify-center">
+        <div class="w-full md:w-full">
+            <img class="h-auto shadow rounded-lg mx-auto my-3" src="@Model?.ImageUrl" alt="@Model?.ProductName">
+            <p class="text-lg text-red-500 my-3">
                 <b>@Model?.Price.ToString("c")</b>
             </p>
         </div>
     </div>
+</div>
 
-    <h2></h2>
-    <p></p>
-    <div class="btn-group">
-        <a class="btn btn-outline-primary rounded-2 me-3" asp-controller="Home" asp-action="Index">
-            <i class="fa-solid fa-house"></i> Home
-        </a>
-
-        <form id="@Model?.ProductId" asp-page="/cart" method="post">
-            <input type="hidden" asp-for="ProductId" />
-            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-            <button type="submit" class="btn btn-outline-success rounded-2 me-3">
-                <i class="fa-solid fa-cart-plus"></i>
-            </button>
-        </form>
-
-        <a class="btn btn-outline-primary rounded-2" asp-controller="Product" asp-action="Index">
-            <i class="fa-solid fa-list"></i> Products
-        </a>
-    </div>
+<div class="row flex justify-center my-3">
+    <a class="rounded-md rounded-r-none bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        asp-controller="Home" asp-action="Index">
+        <i class="fa-solid fa-house"></i> Home
+    </a>
+    <form id="@Model?.ProductId" asp-page="/cart" method="post">
+        <input type="hidden" asp-for="ProductId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <button type="submit"
+            class="rounded-md rounded-none bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+            <i class="fa-solid fa-cart-plus"></i>
+            Add to Cart
+        </button>
+    </form>
+    <a class="rounded-md rounded-l-none bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        asp-controller="Product" asp-action="Index">
+        <i class="fa-solid fa-list"></i> Products
+    </a>
 </div>
