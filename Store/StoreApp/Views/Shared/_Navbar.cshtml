@@ -19,10 +19,6 @@
             <a class="text-sm/6 font-semibold text-gray-900" asp-area="" asp-page="/Cart">
                 Cart (@await Component.InvokeAsync("CartSummary")) <span aria-hidden="true">&rarr;</span>
             </a>
-            <a class="text-sm/6 font-semibold text-gray-900" asp-area="Admin" asp-controller="Dashboard"
-                asp-action="Index">
-                Admin <span aria-hidden="true">&rarr;</span>
-            </a>
             <partial name="_LoginMenu" />
         </div>
     </nav>
