@@ -35,5 +35,12 @@ namespace StoreApp.Areas.Admin.Controllers
             }
             return View();
         }
+
+        [HttpGet("update/{name}")]
+        public async Task<IActionResult> Update([FromRoute(Name = "Name")] string Name)
+        {
+            var role = await _manager.AuthService.GetOneRoleForUpdate(Name);
+            return View(role);
+        }
     }
 }
