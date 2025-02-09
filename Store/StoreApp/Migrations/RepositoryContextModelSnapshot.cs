@@ -263,6 +263,29 @@ namespace StoreApp.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "e594d2f2-db94-4128-b791-9a41faba9be5",
+                            ConcurrencyStamp = "6ff5ee65-fea4-4bac-9a1c-6ff558da983b",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "f1e2a7bf-d08f-431d-b750-ac971d94daf7",
+                            ConcurrencyStamp = "30c7b4fb-d8cc-43f2-a0a9-d25851ba7fa8",
+                            Name = "Editor",
+                            NormalizedName = "EDITOR"
+                        },
+                        new
+                        {
+                            Id = "6f269ed5-e3fe-4bbe-9b5b-4827ac4e8938",
+                            ConcurrencyStamp = "5985c520-7ad7-4196-a7ce-8e93ec0603f7",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
