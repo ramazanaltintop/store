@@ -39,5 +39,11 @@ namespace StoreApp.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> Logout([FromQuery(Name = "ReturnUrl")] string ReturnUrl = "/")
+        {
+            await _signInManager.SignOutAsync();
+            return Redirect(ReturnUrl);
+        }
     }
 }
