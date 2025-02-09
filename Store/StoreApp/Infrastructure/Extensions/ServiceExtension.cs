@@ -6,6 +6,7 @@ using DataAccess.Concrete.EntityFramework.Contexts;
 using DataAccess.Repositories.EntityFramework;
 using DataAccess.RepositoryManager;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using StoreApp.Models;
 
@@ -19,8 +20,24 @@ namespace StoreApp.Infrastructure.Extensions
             services.AddDbContext<RepositoryContext>(options =>
             {
                 options.UseSqlite(configuration.GetConnectionString("sqlconnection"),
-                b => b.MigrationsAssembly("StoreApp"));
+                    b => b.MigrationsAssembly("StoreApp"));
+                
+                options.EnableSensitiveDataLogging(true);
             });
+        }
+
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 6;
+            })
+            .AddEntityFrameworkStores<RepositoryContext>();
         }
 
         public static void ConfigureSession(this IServiceCollection services)
@@ -53,7 +70,8 @@ namespace StoreApp.Infrastructure.Extensions
 
         public static void ConfigureRouting(this IServiceCollection services)
         {
-            services.AddRouting(options => {
+            services.AddRouting(options =>
+            {
                 options.LowercaseUrls = true;
                 options.AppendTrailingSlash = false;
             });
