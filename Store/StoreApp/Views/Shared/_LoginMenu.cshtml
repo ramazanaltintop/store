@@ -1,0 +1,12 @@
+@if (User.Identity.IsAuthenticated)
+{
+    <a class="text-sm/6 font-semibold text-gray-900" asp-area="" asp-controller="Account" asp-action="Logout">
+        Logout <span aria-hidden="true">&rarr;</span>
+    </a>
+}
+else
+{
+    <a class="text-sm/6 font-semibold text-gray-900" asp-area="" asp-controller="Account" asp-action="Login">
+        Login <span aria-hidden="true">&rarr;</span>
+    </a>
+}
