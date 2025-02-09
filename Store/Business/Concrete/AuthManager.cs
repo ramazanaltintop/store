@@ -33,5 +33,12 @@ namespace Business.Concrete
         {
             return _userManager.Users.ToList();
         }
+
+        public async Task<RoleDtoForUpdate> GetOneRoleForUpdate(string name)
+        {
+            var role = await _roleManager.FindByNameAsync(name);
+            var roleDto = _mapper.Map<RoleDtoForUpdate>(role);
+            return roleDto;
+        }
     }
 }
