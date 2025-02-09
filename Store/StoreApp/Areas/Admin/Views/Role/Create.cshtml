@@ -1,0 +1,33 @@
+@model RoleDtoForInsertion
+
+<div class="text-center">
+    <div class="content-header">
+        <h1 class="m-0">Create Role</h1>
+    </div>
+</div>
+
+<form method="post" asp-action="Create" enctype="multipart/form-data" class="ms-3 me-3">
+
+    <div class="text-danger my-3" asp-validation-summary="All"></div>
+
+    <div class="form-group my-3">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+
+    <div class="form-group my-3">
+        <label asp-for="NormalizedName"></label>
+        <input class="form-control" asp-for="NormalizedName" />
+    </div>
+
+    <div class="form-group my-3">
+        <div class="btn-group">
+            <button class="btn btn-primary" type="submit">
+                <i class="fa-solid fa-floppy-disk"></i> Save
+            </button>
+            <a class="btn btn-outline-primary" asp-action="Index">
+                <i class="fa-solid fa-list"></i> Roles
+            </a>
+        </div>
+    </div>
+</form>

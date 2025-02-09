@@ -1,0 +1,28 @@
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a class="text-sm/6 font-semibold text-gray-900" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+        Admin <span aria-hidden="true">&rarr;</span>
+    </a>
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <a class="text-sm/6 font-semibold text-gray-900"
+        asp-area=""
+        asp-controller="Account"
+        asp-route-returnUrl="@Context.Request.PathAndQuery()"
+        asp-action="Logout">
+        Logout <span aria-hidden="true">&rarr;</span>
+    </a>
+}
+else
+{
+    <a class="text-sm/6 font-semibold text-gray-900"
+        asp-area="" 
+        asp-controller="Account" 
+        asp-route-returnUrl="@Context.Request.PathAndQuery()"
+        asp-action="Login">
+        Login <span aria-hidden="true">&rarr;</span>
+    </a>
+}
