@@ -1,3 +1,4 @@
+using Entities.Dtos;
 using Microsoft.AspNetCore.Identity;
 
 namespace Business.Abstract
@@ -5,6 +6,7 @@ namespace Business.Abstract
     public interface IAuthService
     {
         IEnumerable<IdentityRole> Roles { get; }
+        Task<IdentityResult> CreateOneRole(RoleDtoForInsertion roleDto);
         IEnumerable<IdentityUser> GetAllUsers();
     }
 }
