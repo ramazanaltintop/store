@@ -26,6 +26,7 @@ namespace Business.Concrete
         public async Task<IdentityResult> CreateOneRole(RoleDtoForInsertion roleDto)
         {
             var role = _mapper.Map<IdentityRole>(roleDto);
+            role.ConcurrencyStamp = Guid.NewGuid().ToString();
             return await _roleManager.CreateAsync(role);
         }
 
@@ -34,9 +35,9 @@ namespace Business.Concrete
             return _userManager.Users.ToList();
         }
 
-        public async Task<RoleDtoForUpdate> GetOneRoleForUpdate(string name)
+        public async Task<RoleDtoForUpdate> GetOneRoleForUpdate(string id)
         {
-            var role = await _roleManager.FindByNameAsync(name);
+            var role = await _roleManager.FindByIdAsync(id);
             var roleDto = _mapper.Map<RoleDtoForUpdate>(role);
             return roleDto;
         }
