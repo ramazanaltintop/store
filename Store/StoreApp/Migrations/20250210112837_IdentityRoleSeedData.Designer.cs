@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250210082915_IdentityRoleSeedData")]
+    [Migration("20250210112837_IdentityRoleSeedData")]
     partial class IdentityRoleSeedData
     {
         /// <inheritdoc />
@@ -270,24 +270,31 @@ namespace StoreApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "69785b23-de42-4f6f-a6ec-9510c386fc76",
-                            ConcurrencyStamp = "000b2776-af06-4ca3-87db-4ace0459301d",
+                            Id = "648668a3-0023-4e93-861e-71b185d4d31a",
+                            ConcurrencyStamp = "cf0981df-f807-46be-bd79-206a7331d819",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "657c175b-f11b-493e-b9b8-5b6a4e4a90dc",
-                            ConcurrencyStamp = "6cf1fc7b-8896-41f1-a401-4bcacd940438",
+                            Id = "818ad490-1351-4afc-b78a-548c086f1ea6",
+                            ConcurrencyStamp = "7e5522b9-d152-45b7-9559-f78107f37324",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "970c2454-a97e-4c97-a6b4-566ba603f08e",
-                            ConcurrencyStamp = "9aa39673-59e1-49d8-98bd-0c087551f6d2",
+                            Id = "ff42623d-290d-41ba-b299-36b7085fb1f8",
+                            ConcurrencyStamp = "efa80e20-ae8e-4806-8293-f4abdbef2b27",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "fecdb8be-9923-4d18-92bb-7cefae5aafef",
+                            ConcurrencyStamp = "14ecb946-5eff-48fb-abed-29b8eb23927d",
+                            Name = "Blogger",
+                            NormalizedName = "BLOGGER"
                         });
                 });
 
