@@ -1,6 +1,8 @@
 using Business.ServiceManager;
 using Entities.Dtos;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace StoreApp.Areas.Admin.Controllers
 {
@@ -36,10 +38,9 @@ namespace StoreApp.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpGet("update/{name}")]
-        public async Task<IActionResult> Update([FromRoute(Name = "Name")] string Name)
+        public async Task<IActionResult> Update([FromRoute(Name = "id")] string id)
         {
-            var role = await _manager.AuthService.GetOneRoleForUpdate(Name);
+            var role = await _manager.AuthService.GetOneRoleForUpdate(id);
             return View(role);
         }
     }
