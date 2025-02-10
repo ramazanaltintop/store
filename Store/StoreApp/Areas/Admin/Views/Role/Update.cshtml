@@ -10,6 +10,8 @@
 
     <div class="text-danger my-3" asp-validation-summary="All"></div>
 
+    <input type="hidden" asp-for="Id">
+
     <div class="form-group my-3">
         <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name" />
@@ -22,12 +24,12 @@
 
     <div class="form-group my-3">
         <div class="btn-group">
-        <button class="btn btn-primary" type="submit">
-            <i class="fa-solid fa-floppy-disk"></i> Update
-        </button>
-        <a class="btn btn-outline-primary" asp-action="Index">
-            <i class="fa-solid fa-user-shield"></i> Roles
-        </a>
+            <button class="btn btn-primary" type="submit">
+                <i class="fa-solid fa-floppy-disk"></i> Update
+            </button>
+            <a class="btn btn-outline-primary" asp-action="Index">
+                <i class="fa-solid fa-user-shield"></i> Roles
+            </a>
         </div>
     </div>
 </form>
