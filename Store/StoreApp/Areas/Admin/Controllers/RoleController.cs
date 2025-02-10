@@ -43,5 +43,16 @@ namespace StoreApp.Areas.Admin.Controllers
             var role = await _manager.AuthService.GetOneRoleForUpdate(id);
             return View(role);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete([FromRoute(Name = "id")] string id)
+        {
+            var role = await _manager.AuthService.DeleteOneRole(id);
+            if (role.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }

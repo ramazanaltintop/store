@@ -30,6 +30,16 @@ namespace Business.Concrete
             return await _roleManager.CreateAsync(role);
         }
 
+        public async Task<IdentityResult> DeleteOneRole(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role is null)
+            {
+                throw new Exception("Role not found");
+            }
+            return await _roleManager.DeleteAsync(role);
+        }
+
         public IEnumerable<IdentityUser> GetAllUsers()
         {
             return _userManager.Users.ToList();
