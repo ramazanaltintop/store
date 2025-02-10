@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250209121848_IdentityRoleSeedData")]
+    [Migration("20250210082915_IdentityRoleSeedData")]
     partial class IdentityRoleSeedData
     {
         /// <inheritdoc />
@@ -270,19 +270,22 @@ namespace StoreApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4cc47e29-f4a7-46ac-a450-ead3ae884f4b",
+                            Id = "69785b23-de42-4f6f-a6ec-9510c386fc76",
+                            ConcurrencyStamp = "000b2776-af06-4ca3-87db-4ace0459301d",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "1f76d7cd-abdd-4f1c-bace-f50b35c337d8",
+                            Id = "657c175b-f11b-493e-b9b8-5b6a4e4a90dc",
+                            ConcurrencyStamp = "6cf1fc7b-8896-41f1-a401-4bcacd940438",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "9af9af92-f0ec-40e5-b568-7dcc7f142558",
+                            Id = "970c2454-a97e-4c97-a6b4-566ba603f08e",
+                            ConcurrencyStamp = "9aa39673-59e1-49d8-98bd-0c087551f6d2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

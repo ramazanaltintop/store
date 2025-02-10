@@ -9,9 +9,9 @@ namespace DataAccess.Config
         public void Configure(EntityTypeBuilder<IdentityRole> builder)
         {
             builder.HasData(
-                new IdentityRole() { Name = "User", NormalizedName = "USER" },
-                new IdentityRole() { Name = "Editor", NormalizedName = "EDITOR" },
-                new IdentityRole() { Name = "Admin", NormalizedName = "ADMIN" }
+                new IdentityRole() { Name = "User", NormalizedName = "USER", ConcurrencyStamp = Guid.NewGuid().ToString() },
+                new IdentityRole() { Name = "Editor", NormalizedName = "EDITOR", ConcurrencyStamp = Guid.NewGuid().ToString() },
+                new IdentityRole() { Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString() }
             );
         }
     }
