@@ -11,7 +11,9 @@ namespace DataAccess.Config
             builder.HasData(
                 new IdentityRole() { Name = "User", NormalizedName = "USER", ConcurrencyStamp = Guid.NewGuid().ToString() },
                 new IdentityRole() { Name = "Editor", NormalizedName = "EDITOR", ConcurrencyStamp = Guid.NewGuid().ToString() },
-                new IdentityRole() { Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString() }
+                new IdentityRole() { Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString() },
+                new IdentityRole() { Name = "Blogger", NormalizedName = "BLOGGER", ConcurrencyStamp = Guid.NewGuid().ToString() },
+                new IdentityRole() { Name = "Test", NormalizedName = "TEST", ConcurrencyStamp = Guid.NewGuid().ToString() }
             );
         }
     }

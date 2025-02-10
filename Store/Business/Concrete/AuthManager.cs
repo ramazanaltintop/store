@@ -23,13 +23,6 @@ namespace Business.Concrete
         public IEnumerable<IdentityRole> Roles =>
             _roleManager.Roles;
 
-        public async Task<IdentityResult> CreateOneRole(RoleDtoForInsertion roleDto)
-        {
-            var role = _mapper.Map<IdentityRole>(roleDto);
-            role.ConcurrencyStamp = Guid.NewGuid().ToString();
-            return await _roleManager.CreateAsync(role);
-        }
-
         public async Task<IdentityResult> DeleteOneRole(string id)
         {
             var role = await _roleManager.FindByIdAsync(id);

@@ -245,10 +245,11 @@ namespace StoreApp.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "648668a3-0023-4e93-861e-71b185d4d31a", "cf0981df-f807-46be-bd79-206a7331d819", "User", "USER" },
-                    { "818ad490-1351-4afc-b78a-548c086f1ea6", "7e5522b9-d152-45b7-9559-f78107f37324", "Editor", "EDITOR" },
-                    { "fecdb8be-9923-4d18-92bb-7cefae5aafef", "14ecb946-5eff-48fb-abed-29b8eb23927d", "Blogger", "BLOGGER" },
-                    { "ff42623d-290d-41ba-b299-36b7085fb1f8", "efa80e20-ae8e-4806-8293-f4abdbef2b27", "Admin", "ADMIN" }
+                    { "22e86940-77d3-438b-8423-a2878c34274a", "22074766-587b-4c46-bea6-b2c2b7d3e2db", "Test", "TEST" },
+                    { "288ad73f-680d-4fdc-baf5-03858457ff65", "593b0288-edff-4233-9728-871904fea565", "Admin", "ADMIN" },
+                    { "3d3c8af2-b5b9-469b-9cf5-585537a350cf", "281a5550-50e6-441a-ad0a-13433543efa0", "User", "USER" },
+                    { "741015b7-ddbd-401c-a1bd-9623e7e0f740", "fea56159-3d3b-43cd-96e2-ebadc4cc7774", "Blogger", "BLOGGER" },
+                    { "818a01cf-9e8a-48a7-85ae-99248446b252", "ce276f1a-ed4c-4dcc-b2c1-c166a503e62c", "Editor", "EDITOR" }
                 });
 
             migrationBuilder.InsertData(
