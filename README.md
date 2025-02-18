@@ -1,5 +1,4 @@
 # Store
-...
 ## Features
 * ASP.NET Core MVC
 * Layered Architecture
