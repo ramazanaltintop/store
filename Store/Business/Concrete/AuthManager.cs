@@ -23,11 +23,29 @@ namespace Business.Concrete
         public IEnumerable<IdentityRole> Roles =>
             _roleManager.Roles;
 
-        public async Task<IdentityResult> CreateOneRole(RoleDtoForInsertion roleDto)
+        public async Task<IdentityResult> CreateUser(UserDtoForCreation userDto)
         {
-            var role = _mapper.Map<IdentityRole>(roleDto);
-            role.ConcurrencyStamp = Guid.NewGuid().ToString();
-            return await _roleManager.CreateAsync(role);
+            var user = _mapper.Map<IdentityUser>(userDto);
+            var result = await _userManager.CreateAsync(user, userDto.Password);
+            if (!result.Succeeded)
+                throw new Exception("User could not be created.");
+            if (userDto.Roles.Count > 0)
+            {
+                var roleResult = await _userManager.AddToRolesAsync(user, userDto.Roles);
+                if (!roleResult.Succeeded)
+                    throw new Exception("System have problems with roles.");
+            }
+            return result;
+        }
+
+        public async Task<IdentityResult> DeleteOneRole(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role is null)
+            {
+                throw new Exception("Role not found");
+            }
+            return await _roleManager.DeleteAsync(role);
         }
 
         public IEnumerable<IdentityUser> GetAllUsers()

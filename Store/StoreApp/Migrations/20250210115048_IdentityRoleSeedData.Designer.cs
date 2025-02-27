@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250210082915_IdentityRoleSeedData")]
+    [Migration("20250210115048_IdentityRoleSeedData")]
     partial class IdentityRoleSeedData
     {
         /// <inheritdoc />
@@ -270,24 +270,38 @@ namespace StoreApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "69785b23-de42-4f6f-a6ec-9510c386fc76",
-                            ConcurrencyStamp = "000b2776-af06-4ca3-87db-4ace0459301d",
+                            Id = "3d3c8af2-b5b9-469b-9cf5-585537a350cf",
+                            ConcurrencyStamp = "281a5550-50e6-441a-ad0a-13433543efa0",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "657c175b-f11b-493e-b9b8-5b6a4e4a90dc",
-                            ConcurrencyStamp = "6cf1fc7b-8896-41f1-a401-4bcacd940438",
+                            Id = "818a01cf-9e8a-48a7-85ae-99248446b252",
+                            ConcurrencyStamp = "ce276f1a-ed4c-4dcc-b2c1-c166a503e62c",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "970c2454-a97e-4c97-a6b4-566ba603f08e",
-                            ConcurrencyStamp = "9aa39673-59e1-49d8-98bd-0c087551f6d2",
+                            Id = "288ad73f-680d-4fdc-baf5-03858457ff65",
+                            ConcurrencyStamp = "593b0288-edff-4233-9728-871904fea565",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "741015b7-ddbd-401c-a1bd-9623e7e0f740",
+                            ConcurrencyStamp = "fea56159-3d3b-43cd-96e2-ebadc4cc7774",
+                            Name = "Blogger",
+                            NormalizedName = "BLOGGER"
+                        },
+                        new
+                        {
+                            Id = "22e86940-77d3-438b-8423-a2878c34274a",
+                            ConcurrencyStamp = "22074766-587b-4c46-bea6-b2c2b7d3e2db",
+                            Name = "Test",
+                            NormalizedName = "TEST"
                         });
                 });
 
