@@ -1,4 +1,5 @@
 using Business.ServiceManager;
+using Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StoreApp.Areas.Admin.Controllers
@@ -16,6 +17,19 @@ namespace StoreApp.Areas.Admin.Controllers
         public IActionResult Index()
         {
             return View(_manager.AuthService.GetAllUsers());
+        }
+
+        public IActionResult Create()
+        {
+            return View(new UserDtoForCreation()
+            {
+                Roles = new HashSet<string>(_manager
+                    .AuthService
+                    .Roles
+                    .Select(r => r.Name)
+                    .ToList()
+                )
+            });
         }
     }
 }
