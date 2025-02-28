@@ -59,5 +59,10 @@ namespace Business.Concrete
             var roleDto = _mapper.Map<RoleDtoForUpdate>(role);
             return roleDto;
         }
+
+        public async Task<IdentityUser> GetOneUser(string userName)
+        {
+            return await _userManager.FindByNameAsync(userName);
+        }
     }
 }
