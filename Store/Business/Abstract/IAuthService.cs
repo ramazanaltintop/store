@@ -10,5 +10,6 @@ namespace Business.Abstract
         Task<IdentityResult> DeleteOneRole(string id);
         IEnumerable<IdentityUser> GetAllUsers();
         Task<IdentityResult> CreateUser(UserDtoForCreation userDto);
+        Task<IdentityUser> GetOneUser(string userName);
     }
 }
