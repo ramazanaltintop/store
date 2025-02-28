@@ -64,5 +64,25 @@ namespace Business.Concrete
         {
             return await _userManager.FindByNameAsync(userName);
         }
+
+        public async Task Update(UserDtoForUpdate userDto)
+        {
+            var user = await GetOneUser(userDto.UserName);
+            user.PhoneNumber = userDto.PhoneNumber;
+            user.Email = userDto.Email;
+
+            if (user is not null)
+            {
+                var result = await _userManager.UpdateAsync(user);
+                if (userDto.Roles.Count > 0)
+                {
+                    var userRoles = await _userManager.GetRolesAsync(user);
+                    var r1 = await _userManager.RemoveFromRolesAsync(user, userRoles);
+                    var r2 = await _userManager.AddToRolesAsync(user, userDto.Roles);
+                }
+                return;
+            }
+            throw new Exception("System have problem with user update.");
+        }
     }
 }
