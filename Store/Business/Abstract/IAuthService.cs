@@ -9,8 +9,9 @@ namespace Business.Abstract
         Task<RoleDtoForUpdate> GetOneRoleForUpdate(string id);
         Task<IdentityResult> DeleteOneRole(string id);
         IEnumerable<IdentityUser> GetAllUsers();
-        Task<IdentityResult> CreateUser(UserDtoForCreation userDto);
         Task<IdentityUser> GetOneUser(string userName);
+        Task<UserDtoForUpdate> GetOneUserForUpdate(string userName);
+        Task<IdentityResult> CreateUser(UserDtoForCreation userDto);
         Task Update(UserDtoForUpdate userDto);
     }
 }
