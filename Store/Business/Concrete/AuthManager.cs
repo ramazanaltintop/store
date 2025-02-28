@@ -64,9 +64,14 @@ namespace Business.Concrete
             return _userManager.Users.ToList();
         }
 
+        public async Task<IdentityRole> GetOneRole(string id)
+        {
+            return await _roleManager.FindByIdAsync(id);
+        }
+
         public async Task<RoleDtoForUpdate> GetOneRoleForUpdate(string id)
         {
-            var role = await _roleManager.FindByIdAsync(id);
+            var role = await GetOneRole(id);
             var roleDto = _mapper.Map<RoleDtoForUpdate>(role);
             return roleDto;
         }
@@ -107,6 +112,26 @@ namespace Business.Concrete
                 return;
             }
             throw new Exception("System have problem with user update.");
+        }
+
+        public async Task Update(RoleDtoForUpdate roleDto)
+        {
+            var role = await GetOneRole(roleDto.Id);
+
+            if (role is null)
+                throw new Exception("role not found");
+
+            role.Name = roleDto.Name;
+            role.NormalizedName = roleDto.NormalizedName;
+            role.ConcurrencyStamp = Guid.NewGuid().ToString();
+
+            var result = await _roleManager.UpdateAsync(role);
+
+            if (!result.Succeeded)
+            {
+                var errors = string.Join(",", result.Errors.Select(e => e.Description));
+                throw new Exception($"Role update failed: {errors}");
+            }
         }
     }
 }

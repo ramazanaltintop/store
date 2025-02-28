@@ -6,9 +6,11 @@ namespace Business.Abstract
     public interface IAuthService
     {
         IEnumerable<IdentityRole> Roles { get; }
+        Task<IdentityRole> GetOneRole(string id);
         Task<RoleDtoForUpdate> GetOneRoleForUpdate(string id);
         Task<IdentityResult> CreateRole(RoleDtoForInsertion roleDto);
         Task<IdentityResult> DeleteOneRole(string id);
+        Task Update(RoleDtoForUpdate roleDto);
 
 
         IEnumerable<IdentityUser> GetAllUsers();
