@@ -13,7 +13,7 @@ namespace StoreApp.Infrastructure.Mapper.AutoMapper
             CreateMap<ProductDtoForUpdate, Product>().ReverseMap();
 
             CreateMap<UserDtoForCreation, IdentityUser>();
-            CreateMap<UserDtoForUpdate, IdentityUser>();
+            CreateMap<UserDtoForUpdate, IdentityUser>().ReverseMap();
             
             CreateMap<RoleDtoForInsertion, IdentityRole>();
             CreateMap<RoleDtoForUpdate, IdentityRole>().ReverseMap();
