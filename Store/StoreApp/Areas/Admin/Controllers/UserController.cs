@@ -41,5 +41,10 @@ namespace StoreApp.Areas.Admin.Controllers
                 ? RedirectToAction("Index")
                 : View();
         }
+
+        public async Task<IActionResult> Update([FromRoute(Name = "id")] string id)
+        {
+            return View();
+        }
     }
 }
