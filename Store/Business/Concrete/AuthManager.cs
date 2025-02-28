@@ -23,6 +23,17 @@ namespace Business.Concrete
         public IEnumerable<IdentityRole> Roles =>
             _roleManager.Roles;
 
+        public async Task<IdentityResult> CreateRole(RoleDtoForInsertion roleDto)
+        {
+            var role = _mapper.Map<IdentityRole>(roleDto);
+            role.Id = Guid.NewGuid().ToString();
+            role.ConcurrencyStamp = Guid.NewGuid().ToString();
+            var result = await _roleManager.CreateAsync(role);
+            if (!result.Succeeded)
+                throw new Exception("Role could not be created.");
+            return result;
+        }
+
         public async Task<IdentityResult> CreateUser(UserDtoForCreation userDto)
         {
             var user = _mapper.Map<IdentityUser>(userDto);

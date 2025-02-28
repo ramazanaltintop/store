@@ -7,7 +7,10 @@ namespace Business.Abstract
     {
         IEnumerable<IdentityRole> Roles { get; }
         Task<RoleDtoForUpdate> GetOneRoleForUpdate(string id);
+        Task<IdentityResult> CreateRole(RoleDtoForInsertion roleDto);
         Task<IdentityResult> DeleteOneRole(string id);
+
+
         IEnumerable<IdentityUser> GetAllUsers();
         Task<IdentityUser> GetOneUser(string userName);
         Task<UserDtoForUpdate> GetOneUserForUpdate(string userName);

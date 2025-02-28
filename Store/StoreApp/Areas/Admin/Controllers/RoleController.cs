@@ -26,6 +26,16 @@ namespace StoreApp.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([FromForm] RoleDtoForInsertion roleDto)
+        {
+            var result = await _manager.AuthService.CreateRole(roleDto);
+            return result.Succeeded
+                ? RedirectToAction("Index")
+                : View();
+        }
+
         public async Task<IActionResult> Update([FromRoute(Name = "id")] string id)
         {
             var role = await _manager.AuthService.GetOneRoleForUpdate(id);
