@@ -65,6 +65,19 @@ namespace Business.Concrete
             return await _userManager.FindByNameAsync(userName);
         }
 
+        public async Task<UserDtoForUpdate> GetOneUserForUpdate(string userName)
+        {
+            var user = await GetOneUser(userName);
+            if (user is not null)
+            {
+                var userDto = _mapper.Map<UserDtoForUpdate>(user);
+                userDto.Roles = new HashSet<string>(Roles.Select(r => r.Name).ToList());
+                userDto.UserRoles = new HashSet<string>(await _userManager.GetRolesAsync(user));
+                return userDto;
+            }
+            throw new Exception("An error occured.");
+        }
+
         public async Task Update(UserDtoForUpdate userDto)
         {
             var user = await GetOneUser(userDto.UserName);
