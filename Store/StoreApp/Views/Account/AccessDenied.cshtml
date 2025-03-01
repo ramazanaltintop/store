@@ -1,0 +1,28 @@
+<div class="lg:flex lg:gap-x-12">
+    <div role="alert"
+        class="mb-8 mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 mt-3 relative flex flex-col w-full p-3 text-sm text-white bg-red-500 rounded-md">
+        <h1
+            class="text-white font-bold leading-snug tracking-tight text-slate-800 mx-auto my-6 w-full text-2xl lg:max-w-3xl lg:text-5xl text-center">
+            <i class="fa-solid fa-bug-slash"></i>
+            <br />
+            <br />
+            Access Denied
+        </h1>
+        <div class="text-center">
+            <div class="lead text-xl">
+                You have no permission to access this page. Please get in touch with system admin.
+                <br />
+            </div>
+        </div>
+        <div class="row flex justify-center my-3">
+            <div class="btn-group my-5">
+                <a class="rounded-md rounded-r-none bg-yellow-300 py-2 px-4 border border-transparent text-center text-sm text-black transition-all shadow-md hover:shadow-lg focus:bg-yellow-400 focus:shadow-none active:bg-yellow-400 hover:bg-yellow-400 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    asp-controller="Home" asp-action="Index">Home</a>
+                <a class="rounded-md rounded-none bg-yellow-300 py-2 px-4 border border-transparent text-center text-sm text-black transition-all shadow-md hover:shadow-lg focus:bg-yellow-400 focus:shadow-none active:bg-yellow-400 hover:bg-yellow-400 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    asp-controller="Product" asp-action="Index">Products</a>
+                <a class="rounded-md rounded-l-none bg-yellow-300 py-2 px-4 border border-transparent text-center text-sm text-black transition-all shadow-md hover:shadow-lg focus:bg-yellow-400 focus:shadow-none active:bg-yellow-400 hover:bg-yellow-400 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    asp-page="/contact">Contact</a>
+            </div>
+        </div>
+    </div>
+</div>
