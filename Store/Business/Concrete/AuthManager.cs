@@ -23,6 +23,59 @@ namespace Business.Concrete
         public IEnumerable<IdentityRole> Roles =>
             _roleManager.Roles;
 
+        public async Task<IdentityResult> CreateRole(RoleDtoForInsertion roleDto)
+        {
+            var role = _mapper.Map<IdentityRole>(roleDto);
+            role.Id = Guid.NewGuid().ToString();
+            role.ConcurrencyStamp = Guid.NewGuid().ToString();
+            var result = await _roleManager.CreateAsync(role);
+            if (!result.Succeeded)
+                throw new Exception("Role could not be created.");
+            return result;
+        }
+
+        public async Task<IdentityRole> GetOneRole(string id)
+        {
+            return await _roleManager.FindByIdAsync(id);
+        }
+
+        public async Task<RoleDtoForUpdate> GetOneRoleForUpdate(string id)
+        {
+            var role = await GetOneRole(id);
+            var roleDto = _mapper.Map<RoleDtoForUpdate>(role);
+            return roleDto;
+        }
+
+        public async Task Update(RoleDtoForUpdate roleDto)
+        {
+            var role = await GetOneRole(roleDto.Id);
+
+            if (role is null)
+                throw new Exception("role not found");
+
+            role.Name = roleDto.Name;
+            role.NormalizedName = roleDto.NormalizedName;
+            role.ConcurrencyStamp = Guid.NewGuid().ToString();
+
+            var result = await _roleManager.UpdateAsync(role);
+
+            if (!result.Succeeded)
+            {
+                var errors = string.Join(",", result.Errors.Select(e => e.Description));
+                throw new Exception($"Role update failed: {errors}");
+            }
+        }
+
+        public async Task<IdentityResult> DeleteOneRole(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role is null)
+            {
+                throw new Exception("Role not found");
+            }
+            return await _roleManager.DeleteAsync(role);
+        }
+
         public async Task<IdentityResult> CreateUser(UserDtoForCreation userDto)
         {
             var user = _mapper.Map<IdentityUser>(userDto);
@@ -38,28 +91,11 @@ namespace Business.Concrete
             return result;
         }
 
-        public async Task<IdentityResult> DeleteOneRole(string id)
-        {
-            var role = await _roleManager.FindByIdAsync(id);
-            if (role is null)
-            {
-                throw new Exception("Role not found");
-            }
-            return await _roleManager.DeleteAsync(role);
-        }
-
         public IEnumerable<IdentityUser> GetAllUsers()
         {
             return _userManager.Users.ToList();
         }
-
-        public async Task<RoleDtoForUpdate> GetOneRoleForUpdate(string id)
-        {
-            var role = await _roleManager.FindByIdAsync(id);
-            var roleDto = _mapper.Map<RoleDtoForUpdate>(role);
-            return roleDto;
-        }
-
+        
         public async Task<IdentityUser> GetOneUser(string userName)
         {
             return await _userManager.FindByNameAsync(userName);
