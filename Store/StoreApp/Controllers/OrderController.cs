@@ -1,5 +1,6 @@
 using Business.ServiceManager;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StoreApp.Controllers
@@ -15,6 +16,7 @@ namespace StoreApp.Controllers
             _cart = cart;
         }
 
+        [Authorize]
         public ViewResult Checkout() => View(new Order());
 
         [HttpPost]
