@@ -2,6 +2,9 @@ using StoreApp.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers()
+    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
@@ -27,8 +30,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.AddCustomRoutes();
-
-app.MapRazorPages();
 
 app.ConfigureAndCheckMigration();
 app.ConfigureLocalization();
