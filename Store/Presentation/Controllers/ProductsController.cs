@@ -1,7 +1,7 @@
 using Business.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
 
-namespace StoreApp.Api
+namespace Presentation.Controllers
 {
     [Route("api/products")]
     [ApiController]
