@@ -23,7 +23,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source = C:\sqlite3\ProductDb.db");
+            // optionsBuilder.UseSqlite(@"Data Source = C:\sqlite3\ProductDb.db");
             optionsBuilder.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
