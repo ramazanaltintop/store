@@ -1,0 +1,133 @@
+<div class="col-md-4">
+    <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+        <div class="mx-3 mb-0 border-b border-slate-200 pt-3 pb-2 px-1">
+            <h5 class="mb-2 text-slate-800 fs-3 font-semibold text-center">
+                Number of Products
+            </h5>
+        </div>
+
+        <div class="p-4">
+            <p class="text-slate-600 text-xl leading-normal font-light text-center">
+                @await Component.InvokeAsync("ProductSummary")
+            </p>
+        </div>
+        <div class="mx-3 border-t border-slate-200 pb-3 pt-2 px-1 d-flex justify-content-center">
+            <span class="text-sm text-slate-600 font-medium">
+                <div class="btn-group">
+                    <a class="btn btn-warning" asp-controller="Product" asp-action="Index">
+                        <i class="fa-solid fa-list"></i> Products
+                    </a>
+                    <a class="btn btn-success" asp-controller="Product" asp-action="Create">
+                        <i class="fa-solid fa-plus"></i> Create
+                    </a>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+        <div class="mx-3 mb-0 border-b border-slate-200 pt-3 pb-2 px-1">
+            <h5 class="mb-2 text-slate-800 fs-3 font-semibold text-center">
+                Number of Categories
+            </h5>
+        </div>
+
+        <div class="p-4">
+            <p class="text-slate-600 text-xl leading-normal font-light text-center">
+                @await Component.InvokeAsync("CategorySummary")
+            </p>
+        </div>
+        <div class="mx-3 border-t border-slate-200 pb-3 pt-2 px-1 d-flex justify-content-center">
+            <span class="text-sm text-slate-600 font-medium">
+                <div class="btn-group">
+                    <a class="btn btn-warning" asp-controller="Category" asp-action="Index">
+                        <i class="fa-solid fa-list"></i> Categories
+                    </a>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+        <div class="mx-3 mb-0 border-b border-slate-200 pt-3 pb-2 px-1">
+            <h5 class="mb-2 text-slate-800 fs-3 font-semibold text-center">
+                Number of Orders in Progress
+            </h5>
+        </div>
+
+        <div class="p-4">
+            <p class="text-slate-600 text-xl leading-normal font-light text-center">
+                @await Component.InvokeAsync("OrdersInProgress")
+            </p>
+        </div>
+        <div class="mx-3 border-t border-slate-200 pb-3 pt-2 px-1 d-flex justify-content-center">
+            <span class="text-sm text-slate-600 font-medium">
+                <div class="btn-group">
+                    <a class="btn btn-warning" asp-controller="Order" asp-action="Index">
+                        <i class="fa-solid fa-list"></i> Orders
+                    </a>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 mt-4">
+    <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+        <div class="mx-3 mb-0 border-b border-slate-200 pt-3 pb-2 px-1">
+            <h5 class="mb-2 text-slate-800 fs-3 font-semibold text-center">
+                Number of Users
+            </h5>
+        </div>
+
+        <div class="p-4">
+            <p class="text-slate-600 text-xl leading-normal font-light text-center">
+                @await Component.InvokeAsync("UserSummary")
+            </p>
+        </div>
+        <div class="mx-3 border-t border-slate-200 pb-3 pt-2 px-1 d-flex justify-content-center">
+            <span class="text-sm text-slate-600 font-medium">
+                <div class="btn-group">
+                    <a class="btn btn-warning" asp-controller="User" asp-action="Index">
+                        <i class="fa-solid fa-list"></i> Users
+                    </a>
+                    <a class="btn btn-success" asp-controller="User" asp-action="Create">
+                        <i class="fa-solid fa-plus"></i> Create
+                    </a>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 mt-4">
+    <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+        <div class="mx-3 mb-0 border-b border-slate-200 pt-3 pb-2 px-1">
+            <h5 class="mb-2 text-slate-800 fs-3 font-semibold text-center">
+                Number of Roles
+            </h5>
+        </div>
+
+        <div class="p-4">
+            <p class="text-slate-600 text-xl leading-normal font-light text-center">
+                @await Component.InvokeAsync("RoleSummary")
+            </p>
+        </div>
+        <div class="mx-3 border-t border-slate-200 pb-3 pt-2 px-1 d-flex justify-content-center">
+            <span class="text-sm text-slate-600 font-medium">
+                <div class="btn-group">
+                    <a class="btn btn-warning" asp-controller="Role" asp-action="Index">
+                        <i class="fa-solid fa-list"></i> Roles
+                    </a>
+                    <a class="btn btn-success" asp-controller="Role" asp-action="Create">
+                        <i class="fa-solid fa-plus"></i> Create
+                    </a>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>

@@ -3,3 +3,13 @@
         <h1 class="m-0">Dashboard</h1>
     </div>
 </div>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <partial name="_Cards" />
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("Showcase", new {page="list"})

@@ -20,9 +20,12 @@ namespace StoreApp.Infrastructure.Extensions
         {
             services.AddDbContext<RepositoryContext>(options =>
             {
-                options.UseSqlite(configuration.GetConnectionString("sqlconnection"),
-                    b => b.MigrationsAssembly("StoreApp"));
-                
+                // options.UseSqlite(configuration.GetConnectionString("sqlconnection"),
+                //     b => b.MigrationsAssembly("StoreApp"));
+
+                options.UseSqlServer(configuration.GetConnectionString("mssqlconnection"),
+                b => b.MigrationsAssembly("StoreApp"));
+
                 options.EnableSensitiveDataLogging(true);
             });
         }
@@ -72,7 +75,8 @@ namespace StoreApp.Infrastructure.Extensions
 
         public static void ConfigureApplicationCookie(this IServiceCollection services)
         {
-            services.ConfigureApplicationCookie(options => {
+            services.ConfigureApplicationCookie(options =>
+            {
                 options.LoginPath = new PathString("/Account/Login");
                 options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
